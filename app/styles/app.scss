@@ -1,0 +1,171 @@
+@import url(https://fonts.googleapis.com/css?family=Artifika);
+@import url(https://fonts.googleapis.com/css?family=Fenix);
+
+@import "ember-bootstrap/functions";
+@import "ember-bootstrap/variables";
+@import "ember-bootstrap/mixins";
+@import "ember-bootstrap/root";
+@import "ember-bootstrap/reboot";
+@import "ember-bootstrap/type";
+// @import "ember-bootstrap/images";
+// @import "ember-bootstrap/code";
+@import "ember-bootstrap/grid";
+// @import "ember-bootstrap/tables";
+@import "ember-bootstrap/forms";
+@import "ember-bootstrap/buttons";
+@import "ember-bootstrap/transitions";
+@import "ember-bootstrap/dropdown";
+@import "ember-bootstrap/button-group";
+@import "ember-bootstrap/input-group";
+// @import "ember-bootstrap/custom-forms";
+@import "ember-bootstrap/nav";
+@import "ember-bootstrap/navbar";
+@import "ember-bootstrap/card";
+// @import "ember-bootstrap/breadcrumb";
+@import "ember-bootstrap/pagination";
+// @import "ember-bootstrap/badge";
+// @import "ember-bootstrap/jumbotron";
+@import "ember-bootstrap/alert";
+// @import "ember-bootstrap/progress";
+// @import "ember-bootstrap/media";
+// @import "ember-bootstrap/list-group";
+@import "ember-bootstrap/close";
+// @import "ember-bootstrap/modal";
+// @import "ember-bootstrap/tooltip";
+// @import "ember-bootstrap/popover";
+// @import "ember-bootstrap/carousel";
+@import "ember-bootstrap/utilities";
+// @import "ember-bootstrap/print";
+
+@import "pics";
+@import "home";
+@import "blogs";
+
+h1, .h1, h2, .h2, h3, .h3, #slogan{
+  font-family: 'Artifika', serif;
+}
+
+#slogan{
+  a {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #999999;
+    &:hover {
+      text-decoration: none;
+      color: #999999;
+    }
+  }
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Fenix', serif;
+  font-size: 16px;
+  background: url('/assets/images/light_wool.png');
+}
+
+.inline{
+  display: inline;
+}
+
+.text-muted{
+  &:hover {
+    color: #999999;
+  }
+}
+.smaller{
+  font-size: 75%;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  margin-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #slogan {
+    margin-right: 20px;
+    a {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.alert-fixed {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px;
+    text-align: center;
+}

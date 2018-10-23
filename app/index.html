@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DbjohnEmber</title>
+    <title>David B. John</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,6 +15,26 @@
     {{content-for "head-footer"}}
   </head>
   <body>
+    <main role="main" class="container" >
+      <div id="site"></div>
+      <div class="footer">
+        <div class="float-right">
+          <a href="https://rubyonrails.org/">
+            <img class="inline" src="/assets/images/rails.jpg" alt="Ruby on Rails Logo"/>
+          </a>
+          <a href="https://emberjs.com/">
+            <img class="inline" src="/assets/images/ember.jpg" alt="Ember JS Logo"/>
+          </a>
+        </div>
+        <div class="float-left">
+          <a href="/login">
+            <div class="text-muted">&nbsp;&copy;&nbsp;DBJohn, LLC</div>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </main>
+
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>

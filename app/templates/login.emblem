@@ -1,0 +1,4 @@
+=bs-form model=login onSubmit=(action "authenticate") as |form|
+  =form.element label="User" controlType="email" property="email"
+  =form.element label="Password" controlType="password" property="password"
+  =bs-button defaultText="Submit" type="primary" buttonType="submit"

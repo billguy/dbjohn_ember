@@ -1,0 +1,23 @@
+h1.hide latest_pic.title
+h2.hide latest_pic.caption
+#latest
+
+figure.cap-bot
+  =link-to "pics"
+    .magnify.thumbnail
+      .large style="background: url('');"
+      img.small.lazy-load.img-responsive src="/assets/images/blank.gif"
+
+      figcaption Caption
+
+.row.marketing.blogs
+hr
+.col-md-6.blog
+  h4 Title
+  .text-muted.small 3 days ago
+  p some text...
+
+.col-md-6.blog
+  h4 Title
+  .text-muted.small 3 days ago
+  p some text...

@@ -5,7 +5,12 @@ module.exports = function(environment) {
     modulePrefix: 'dbjohn-ember',
     environment,
     rootURL: '/',
+    host: 'http://localhost:3000',
+    cableHost: 'ws://localhost:3000/cable',
     locationType: 'auto',
+    emblemOptions:{
+       blueprints: true
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -45,7 +50,16 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.host = 'https://api.dbjohn.com';
+    ENV.cableHost = `wss://api.dbjohn.com/cable`;
   }
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.host + '/signins',
+    tokenPropertyName: 'access',
+    refreshAccessTokens: false,
+    tokenExpirationInvalidateSession: false
+  };
 
   return ENV;
 };
