@@ -107,7 +107,7 @@ ul.tags {
 }
 
 @each $pair in $tagsColors {
-  .#{nth($pair, 1)} {
+  .#{""+nth($pair, 1)} {
     $color: nth($pair, 2);
 
     li:after {
