@@ -2,12 +2,12 @@ import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  message: [
-    validator('title', true),
+  title: [
+    validator('presence', true),
     validator('ds-error')
   ],
-  voice: [
-    validator('content', true),
+  content: [
+    validator('presence', true),
     validator('ds-error')
   ]
 });
