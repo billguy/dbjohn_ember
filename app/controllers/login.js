@@ -20,6 +20,7 @@ export default Controller.extend({
 
       this.session.authenticate(authenticator, { email: email, password: password}).then(() => {
         this.transitionToRoute('index')
+        this.flashMessages.success('Logged in')
       }).catch((reason) => {
         if (reason.json)
           this.flashMessages.danger(reason.json.error)

@@ -1,0 +1,13 @@
+=bs-form model=model onSubmit=(action "submit") as |form|
+
+  =form.element label="Published" controlType="checkbox" property="published"
+  =form.element label="Title" controlType="text" property="title"
+  =form.element label="Permalink" controlType="text" property="permalink"
+  =form.element label="Tags" controlType="text" property="tagList"
+  .sr-only
+    =form.element label="Content" controlType="textarea" property="content"
+    
+  =froala-editor content=model.content update=(action (mut model.content))
+
+  br
+  =bs-button defaultText="Submit" type="primary" buttonType="submit"

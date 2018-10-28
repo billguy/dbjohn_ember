@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
+import { computed } from '@ember/object';
 
 const Validations = buildValidations({
   title: [
@@ -14,10 +15,18 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   published: DS.attr('boolean', { defaultValue: false }),
+  blog: DS.attr('boolean', { defaultValue: false }),
   title: DS.attr('string'),
   permalink: DS.attr('string'),
   content: DS.attr('string'),
-  javascript: DS.attr('string'),
+  tagList: DS.attr('string'),
   createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date')
+  updatedAt: DS.attr('date'),
+  tags: computed('tagList', function(){
+    let tagList = this.get('tagList')
+    if (tagList)
+      return tagList.split(',')
+    else
+      return []
+  })
 });

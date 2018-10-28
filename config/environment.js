@@ -6,8 +6,16 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     host: 'http://localhost:3000',
-    cableHost: 'ws://localhost:3000/cable',
     locationType: 'auto',
+    google_search_key: '008911115616549592922:7t_vhbi7jpg',
+    analytics_key: 'UA-47829506-1',
+    map_key: 'AIzaSyC9X2fmpXGSp3TIQqulFEfxC-9vEXcyL_g',
+    moment: {
+      outputFormat: 'LLLL'
+    },
+    disqus: {
+      shortname: 'dbjohn'
+    },
     emblemOptions:{
        blueprints: true
     },
@@ -51,7 +59,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
     ENV.host = 'https://api.dbjohn.com';
-    ENV.cableHost = `wss://api.dbjohn.com/cable`;
   }
 
   ENV['ember-simple-auth-token'] = {

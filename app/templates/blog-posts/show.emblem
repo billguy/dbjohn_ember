@@ -1,0 +1,24 @@
+.float-left
+  h1
+    =model.title
+  small.text-muted
+    =moment-format model.createdAt
+
+.float-right
+  if session.currentUser
+    =link-to "blog-posts.edit" model
+      span Edit
+.clearfix
+
+
+ul.list-inline.list-unstyled.tags
+  =each model.tags as |tag|
+    li
+      =link-to "blog-posts" (query-params tags=tag)
+        =tag
+        span ...
+
+.blog-post
+  =model.content
+
+=disqus-comments identifier=model.title

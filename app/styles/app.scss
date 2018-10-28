@@ -73,6 +73,17 @@ body {
   display: inline;
 }
 
+.link{
+  color: #007bff !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+  cursor: pointer !important;
+  &:hover{
+    color: #0056b3 !important;
+    text-decoration: underline !important;
+  }
+}
+
 .text-muted{
   &:hover {
     color: #999999;
@@ -96,6 +107,21 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.searchBox{
+  display: none;
+  position: absolute;
+  right: 330px;
+  width: 175px;
+  height: 40px
+}
+.hideSearchBox{
+
+}
+
+.showSearchBox{
+  display: inline;
+  width: 250px
+}
 
 /* Custom page footer */
 .footer {
@@ -106,6 +132,7 @@ body {
 
 /* Customize container */
 @media (min-width: 768px) {
+
   .container {
     max-width: 730px;
   }

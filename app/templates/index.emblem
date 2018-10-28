@@ -1,5 +1,6 @@
 h1.hide latest_pic.title
 h2.hide latest_pic.caption
+
 #latest
 
 figure.cap-bot
