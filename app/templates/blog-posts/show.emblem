@@ -4,12 +4,12 @@
   small.text-muted
     =moment-format model.createdAt
 
-.float-right
-  if session.currentUser
+if session.isAuthenticated
+  .float-right.h1
     =link-to "blog-posts.edit" model
-      span Edit
-.clearfix
+      .btn-primary.btn-sm  Edit Post
 
+.clearfix
 
 ul.list-inline.list-unstyled.tags
   =each model.tags as |tag|

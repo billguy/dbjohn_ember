@@ -16,16 +16,16 @@ Router.map(function() {
   this.route('about');
 
   this.route('blog-posts', function() {
-    this.route('show', { path: ':post_id' } );
-    this.route('edit', { path: ':post_id' } );
+    this.route('show', { path: '/:id' } );
+    this.route('edit', { path: '/:id/edit' } );
     this.route('new');
   });
   this.route('pics', function() {
-    this.route('show', { path: ':pic_id' } );
+    this.route('show', { path: '/:id' } );
   });
   //Legacy route
   this.route('blogs', function() {
-    this.route('show', { path: ':post_id' } )
+    this.route('show', { path: '/:id' } )
   });
 });
 

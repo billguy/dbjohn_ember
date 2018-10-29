@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { alias } from '@ember/object/computed';
 import { inject } from '@ember/service';
 
 export default Controller.extend({

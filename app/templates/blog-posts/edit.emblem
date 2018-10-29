@@ -1,0 +1,3 @@
+h1 Editing '#{model.title}'
+
+=post-form model=model submitAction=(action "submit")
