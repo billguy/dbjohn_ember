@@ -13,12 +13,13 @@ figure.cap-bot
 
 .row.marketing.blogs
 hr
-.col-md-6.blog
-  h4 Title
-  .text-muted.small 3 days ago
-  p some text...
+.row
+  .col-sm-12.col-md-6.blog
+    h4 Title
+    .text-muted.small 3 days ago
+    p some text...
 
-.col-md-6.blog
-  h4 Title
-  .text-muted.small 3 days ago
-  p some text...
+  .col-sm-12.col-md-6.blog
+    h4 Title
+    .text-muted.small 3 days ago
+    p some text...

@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
-import { computed } from '@ember/object';
 
 const Validations = buildValidations({
   title: [
@@ -19,7 +18,8 @@ export default DS.Model.extend(Validations, {
   title: DS.attr('string'),
   permalink: DS.attr('string'),
   content: DS.attr('string'),
-  tagList: DS.attr(),
+  tags: DS.attr(), // To the server
+  tagList: DS.attr(),  //From the server
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });

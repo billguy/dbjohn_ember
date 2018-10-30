@@ -1,0 +1,19 @@
+=bs-form model=user multipart=true onSubmit=(action "submit") as |form|
+
+  =form.element label="Title" controlType="text" property="title"
+  =ember-tags-input tagsData=model.tagList onAddTag=(action "addTag") onAddTags=(action "addTags") onReplaceTagAtIndex=(action "replaceTagAtIndex") onReplaceTagWithTagsAtIndex=(action "replaceTagWithTagsAtIndex") onRemoveTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
+    =tagLabel
+  br
+  =form.element label="Caption" controlType="textarea" property="caption"
+
+  =form.group validation=Validations
+    =form.element label="Photo" controlType="file" property="photo" as |el|
+      .input-group
+        <input class="form-control" accept="image/*" type="file" onChange={{action "uploadPic"}} id=#{el.id} style="display:inline-block;"/>
+        span
+          =uploadProgressPercent
+        =each user.errors.recording as |error|
+          .invalid-feedback.d-block
+            =error.message
+
+  =bs-button defaultText="Submit" type="primary" buttonType="submit" disabled=submitDisabled

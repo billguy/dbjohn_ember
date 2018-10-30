@@ -1,0 +1,3 @@
+h1 New pic
+
+=pic-form model=model submitAction=(action "submit")

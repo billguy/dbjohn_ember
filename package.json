@@ -47,6 +47,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "^4.0.0-rc.4",
     "ember-froala-editor": "^2.8.5",
+    "ember-in-viewport": "^3.1.5",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-moment": "^7.8.0",

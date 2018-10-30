@@ -1,7 +1,7 @@
 .float-left
   h1.h4.inline
     a.link{action "clearTags" on="click"}
-      span Blog posts
+      span Pics
 
   span.text-muted &nbsp;|&nbsp;
 .float-left
@@ -12,29 +12,27 @@
           =tag.name
           span
             =tag.taggings_count
-            
+
 br
 
 if session.isAuthenticated
   .float-right.h1
-    =link-to "blog-posts.new"
-      .btn-primary.btn-sm + New Post
+    =link-to "pics.new"
+      .btn-primary.btn-sm + New Pic
 
 .clearfix
 
-#posts.row
-  =each model.content as |post|
+#pics.row
+  =each pics as |pic|
     .col-sm-6.blog
       h4
-        =link-to "blog-posts.show" post
-          =post.title
+        =link-to "pics.show" pic
+          =pic.title
       .text-muted.small
-        =moment-format post.createdAt
+        =moment-format pic.createdAt
         span &nbsp;•&nbsp;
-        =disqus-comment-count identifier=post.title
-      p
-        =html-content post.content
 
-.float-left
-  =page-numbers content=model
-.clearfix
+      p
+        =pic.content
+
+=pic-pagination loadNextAction=(action "loadNext")

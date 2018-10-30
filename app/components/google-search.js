@@ -6,6 +6,7 @@ export default Component.extend({
   loaded: false,
   searchText: computed('q', function(){
     let q = this.get('q')
+    // let google = this.get('gcse')
     if (this.loaded){
       var element = google.search.cse.element.getElement("results");
       element.prefillQuery(q);

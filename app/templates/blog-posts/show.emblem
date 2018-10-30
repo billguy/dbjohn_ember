@@ -6,14 +6,14 @@
 
 if session.isAuthenticated
 
-  =bs-modal-simple title="Please confirm" closeTitle="Cancel" submitTitle="Confirm" open=deletePost onSubmit=(action "deletePost" model) onHide=(action "cancelDeletingPost")
+  =bs-modal-simple title="Please confirm"  renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=deletePost onSubmit=(action "deletePost" model) onHide=(action (mut deletePost) false)
     p You're about to delete '#{model.title}'. Are you sure?
-  
+
   .float-right
     =link-to "blog-posts.edit" model
       =fa-icon "pencil" size=2
     span &nbsp;
-    span.text-danger{action "setDeletePost"} style="cursor: pointer"
+    span.text-danger{action (mut deletePost) true} style="cursor: pointer"
       =fa-icon "trash" size=2
 
 .clearfix
@@ -21,9 +21,9 @@ if session.isAuthenticated
 ul.list-inline.list-unstyled.tags
   =each model.tags as |tag|
     li
-      =link-to "blog-posts" (query-params tags=tag)
-        =tag
-        span ...
+      =link-to "blog-posts" (query-params tags=tag.name)
+        =tag.name
+        span #{tag.taggings_count}
 
 .blog-post
   =html-content model.content
