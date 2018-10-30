@@ -8,7 +8,7 @@ export default Component.extend({
     let q = this.get('q')
     // let google = this.get('gcse')
     if (this.loaded){
-      var element = google.search.cse.element.getElement("results");
+      var element = window.google.search.cse.element.getElement("results");
       element.prefillQuery(q);
       element.execute(q);
     }

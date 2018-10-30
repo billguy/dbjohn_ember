@@ -18,8 +18,11 @@ export default DS.Model.extend(Validations, {
   location: DS.attr('string'),
   lat: DS.attr('number'),
   lng: DS.attr('number'),
-  photoServiceUrl: DS.attr('string'),
   photo: DS.attr('string'),
+  src: DS.attr('string'),
+  msrc: DS.attr('string'),
+  w: DS.attr('number'),
+  h: DS.attr('number'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });

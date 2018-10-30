@@ -60,6 +60,7 @@
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
     "qunit-dom": "^0.6.2",
+    "ember-cli-photoswipe": "MrChriZ/ember-cli-photoswipe#removeBowerLatestEmber",
     "sass": "^1.14.3"
   },
   "engines": {

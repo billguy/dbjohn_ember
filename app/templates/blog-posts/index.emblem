@@ -1,10 +1,13 @@
-.float-left
-  h1.h4.inline
-    a.link{action "clearTags" on="click"}
-      span Blog posts
+if session.isAuthenticated
+  .float-right.h1
+    =link-to "blog-posts.new"
+      .btn-primary.btn-sm + New Post
 
-  span.text-muted &nbsp;|&nbsp;
-.float-left
+h1.h4
+  a.link{action "clearTags" on="click"}
+    span Blog posts
+
+if model.meta.tag_list
   ul.list-inline.list-unstyled.tags
     =each model.meta.tag_list as |tag|
       li
@@ -12,13 +15,6 @@
           =tag.name
           span
             =tag.taggings_count
-            
-br
-
-if session.isAuthenticated
-  .float-right.h1
-    =link-to "blog-posts.new"
-      .btn-primary.btn-sm + New Post
 
 .clearfix
 

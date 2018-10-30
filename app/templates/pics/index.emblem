@@ -1,10 +1,13 @@
-.float-left
-  h1.h4.inline
-    a.link{action "clearTags" on="click"}
-      span Pics
+if session.isAuthenticated
+  .float-right.h1
+    =link-to "pics.new"
+      .btn-primary.btn-sm + New Pic
 
-  span.text-muted &nbsp;|&nbsp;
-.float-left
+h1.h4
+  a.link{action "clearTags" on="click"}
+    span Pics
+
+if model.meta.tag_list
   ul.list-inline.list-unstyled.tags
     =each model.meta.tag_list as |tag|
       li
@@ -13,26 +16,12 @@
           span
             =tag.taggings_count
 
-br
-
-if session.isAuthenticated
-  .float-right.h1
-    =link-to "pics.new"
-      .btn-primary.btn-sm + New Pic
-
 .clearfix
 
-#pics.row
-  =each pics as |pic|
-    .col-sm-6.blog
-      h4
-        =link-to "pics.show" pic
-          =pic.title
-      .text-muted.small
-        =moment-format pic.createdAt
-        span &nbsp;•&nbsp;
-
-      p
-        =pic.content
+#pics.container
+  .row
+    =photo-swipe items=pics as |pic|
+      a href=pic.src
+        img.thumb src=pic.msrc alt=pic.caption
 
 =pic-pagination loadNextAction=(action "loadNext")
