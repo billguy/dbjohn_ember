@@ -32,8 +32,8 @@ if session.isAuthenticated
         span &nbsp;•&nbsp;
         =disqus-comment-count identifier=post.title
       p
-        =truncate post.content 500 true
+        =html-content post.content
 
-.pull-right
+.float-left
   =page-numbers content=model
 .clearfix

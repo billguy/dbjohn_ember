@@ -5,9 +5,16 @@
     =moment-format model.createdAt
 
 if session.isAuthenticated
-  .float-right.h1
+
+  =bs-modal-simple title="Please confirm" closeTitle="Cancel" submitTitle="Confirm" open=deletePost onSubmit=(action "deletePost" model) onHide=(action "cancelDeletingPost")
+    p You're about to delete '#{model.title}'. Are you sure?
+  
+  .float-right
     =link-to "blog-posts.edit" model
-      .btn-primary.btn-sm  Edit Post
+      =fa-icon "pencil" size=2
+    span &nbsp;
+    span.text-danger{action "setDeletePost"} style="cursor: pointer"
+      =fa-icon "trash" size=2
 
 .clearfix
 
@@ -19,6 +26,6 @@ ul.list-inline.list-unstyled.tags
         span ...
 
 .blog-post
-  =model.content
+  =html-content model.content
 
 =disqus-comments identifier=model.title

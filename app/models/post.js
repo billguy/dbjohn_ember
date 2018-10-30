@@ -19,14 +19,7 @@ export default DS.Model.extend(Validations, {
   title: DS.attr('string'),
   permalink: DS.attr('string'),
   content: DS.attr('string'),
-  tagList: DS.attr('string'),
+  tagList: DS.attr(),
   createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date'),
-  tags: computed('tagList', function(){
-    let tagList = this.get('tagList')
-    if (tagList)
-      return tagList.split(',')
-    else
-      return []
-  })
+  updatedAt: DS.attr('date')
 });
