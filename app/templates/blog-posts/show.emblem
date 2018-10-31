@@ -28,4 +28,4 @@ ul.list-inline.list-unstyled.tags
 .blog-post
   =html-content model.content
 
-=disqus-comments identifier=model.title
+=disqus-comments identifier=model.permalink

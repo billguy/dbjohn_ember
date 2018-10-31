@@ -24,6 +24,7 @@ export default Controller.extend({
       this.get('pagedContent').loadNextPage().then((c)=>{
         let newPics = pics.addObjects(c.content)
         this.set('pics', newPics)
+        this.set('loadedMore', true)
       })
     }
   }

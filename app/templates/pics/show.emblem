@@ -1,0 +1,50 @@
+.row
+  .col-xs-5.col-sm-2
+    =link-to "pics.show" model.prevPermalink
+      img src=model.prevThumbUrl alt=model.prevPermalink height="100" width="100"
+
+  .hidden-xs.col-sm-8.vcenter
+    if model.hasCoords
+      =g-map lat=model.lat lng=model.lng zoom=10
+    else
+      .h4.hidden-xs.text-muted.text-center.content Map Unavailable
+
+  .col-xs-5.col-sm-2
+    =link-to "pics.show" model.nextPermalink
+      img src=model.nextThumbUrl  alt=model.nextPermalink height="100" width="100"
+
+br
+
+figure#subject.cap-bot
+  a href=model.src
+    img src=model.src alt=model.title height="400" width="708"
+    figcaption
+      ul.list-unstyled
+        li
+          =moment-format model.picDate
+        if model.camera
+          li #{model.camera}
+        if model.fInfo
+          li #{model.fInfo}
+        if model.location
+          li #{model.location}
+
+.float-left
+  h1 #{model.title}
+.float-right
+
+  ul.list-inline.list-unstyled.tags
+    =each model.tagList as |tag|
+      li
+        =link-to "pics" (query-params tag=tag.name)
+          =tag.name
+          span
+            =tag.taggingsCount
+
+.clearfix
+
+p #{model.caption}
+
+br
+
+=disqus-comments identifier=model.permalink

@@ -9,7 +9,6 @@ module.exports = function(environment) {
     locationType: 'auto',
     google_search_key: '008911115616549592922:7t_vhbi7jpg',
     analytics_key: 'UA-47829506-1',
-    map_key: 'AIzaSyC9X2fmpXGSp3TIQqulFEfxC-9vEXcyL_g',
     moment: {
       outputFormat: 'LLLL'
     },
@@ -35,6 +34,14 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  ENV['ember-google-maps'] = {
+    key: 'AIzaSyC9X2fmpXGSp3TIQqulFEfxC-9vEXcyL_g',
+    language: 'en',
+    region: 'US',
+    protocol: 'https',
+    libraries: []
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

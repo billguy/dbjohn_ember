@@ -13,10 +13,16 @@ module.exports = function(defaults) {
       plugins  : true,
       themes   : 'royal'
     },
+    'ember-google-maps': {
+      only: ['marker', 'info-window']
+    }
   });
 
   app.import('node_modules/ember-tags-input/vendor/styles/eti-svg-icons.css');
   app.import('node_modules/ember-tags-input/vendor/styles/ember-tags-input.css');
+
+  app.import('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css');
+  app.import('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

@@ -20,8 +20,6 @@ if model.meta.tag_list
 
 #pics.container
   .row
-    =photo-swipe items=pics as |pic|
-      a href=pic.src
-        img.thumb src=pic.msrc alt=pic.caption
+    =fancy-box images=pics loadedMore=loadedMore
 
 =pic-pagination loadNextAction=(action "loadNext")
