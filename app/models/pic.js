@@ -40,9 +40,6 @@ export default DS.Model.extend(Validations, {
     return true
     // return this.get('lat') && this.get('lng')
   }),
-  coords: computed('lat','lng', function(){
-    return [this.get('lat'), this.get('lng')]
-  }),
   camera: computed('make', 'model', function(){
     var string = ''
     if (this.make)

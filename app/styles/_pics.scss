@@ -23,9 +23,13 @@ a.fancybox{
   }
 }
 
-#pic{
+.pic-header{
+  margin-bottom: 5px;
+}
+
+.vcenter{
   .ember-google-map {
-    width: 456px;
+    width: 448px;
     height: 100px;
   }
 }

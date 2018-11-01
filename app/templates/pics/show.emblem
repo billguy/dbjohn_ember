@@ -1,19 +1,19 @@
-.row
+.row.pic-header
   .col-xs-5.col-sm-2
     =link-to "pics.show" model.prevPermalink
       img src=model.prevThumbUrl alt=model.prevPermalink height="100" width="100"
 
-  .hidden-xs.col-sm-8.vcenter
+  .hidden-xs.col-sm-7.vcenter
     if model.hasCoords
-      =g-map lat=model.lat lng=model.lng zoom=10
+      /=g-map lat=model.lat lng=model.lng zoom=10
+      =g-map lat='29.956505600000003' lng='-90.2111232' zoom=10 as |g|
+        =g.marker lat='29.956505600000003' lng='-90.2111232' onClick=(action "markerClicked")
     else
       .h4.hidden-xs.text-muted.text-center.content Map Unavailable
 
   .col-xs-5.col-sm-2
     =link-to "pics.show" model.nextPermalink
       img src=model.nextThumbUrl  alt=model.nextPermalink height="100" width="100"
-
-br
 
 figure#subject.cap-bot
   a href=model.src
