@@ -4,5 +4,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Route.extend(AuthenticatedRouteMixin, {
   model: function(){
     return this.store.createRecord('pic');
+  },
+
+  setupController(controller, model) {
+    controller.set('model', model)
+    model.set('tagList', [])
   }
 });

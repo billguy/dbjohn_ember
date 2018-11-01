@@ -4,7 +4,6 @@
 
   .d-none.d-sm-block
     if model.hasCoords
-      /=g-map lat=model.lat lng=model.lng zoom=10
       =g-map lat='29.956505600000003' lng='-90.2111232' zoom=10 as |g|
         =g.marker lat='29.956505600000003' lng='-90.2111232' onClick=(action "markerClicked" model)
     else
@@ -33,7 +32,7 @@ figure#subject.cap-bot
   ul.list-inline.list-unstyled.tags
     =each model.tags as |tag|
       li
-        =link-to "pics" (query-params tag=tag.name)
+        =link-to "pics" (query-params tags=tag.name)
           =tag.name
           span
             =tag.taggings_count

@@ -6,6 +6,14 @@ const Validations = buildValidations({
   title: [
     validator('presence', true),
     validator('ds-error')
+  ],
+  caption: [
+    validator('presence', true),
+    validator('ds-error')
+  ],
+  photo: [
+    validator('presence', true),
+    validator('ds-error')
   ]
 });
 
@@ -42,23 +50,23 @@ export default DS.Model.extend(Validations, {
   }),
   camera: computed('make', 'model', function(){
     var string = ''
-    if (this.make)
-      string = string `${this.make} `
-    if (this.model)
-      string = string + this.model
+    if (this.get('make'))
+      string = string + `${this.get('make')} `
+    if (this.get('model'))
+      string = string + this.get('model')
     if (string.length)
-      return string
+      return string.replace(this.make, '')
     else
       return null
   }),
   fInfo: computed('fNumber', 'exposureTime', 'isoSpeedRatings', function(){
     var string = ''
-    if (this.fNumber)
-      string = string + `f${this.fNumber}, `
-    if (this.isoSpeedRatings)
-      string = string + `ISO ${this.isoSpeedRatings}, `
-    if (this.exposure_time)
-      string = string + this.fNumber
+    if (this.get('fNumber'))
+      string = string + `f${this.get('fNumber')}, `
+    if (this.get('isoSpeedRatings'))
+      string = string + `ISO ${this.get('isoSpeedRatings')}, `
+    if (this.get('exposureTime'))
+      string = string + this.get('exposureTime')
     if (string.length)
       return string
     else

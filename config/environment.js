@@ -9,6 +9,11 @@ module.exports = function(environment) {
     locationType: 'auto',
     google_search_key: '008911115616549592922:7t_vhbi7jpg',
     analytics_key: 'UA-47829506-1',
+    'ember-cli-google': {
+      recaptcha: {
+        siteKey: process.env.CAPTCHA_KEY
+      }
+    },
     moment: {
       outputFormat: 'LLLL'
     },

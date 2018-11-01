@@ -1,9 +1,11 @@
 import Component from '@ember/component';
 import config from '../config/environment';
 import { computed } from '@ember/object';
+import { inject } from '@ember/service';
 
 export default Component.extend({
 
+  activeStorage: inject(),
   submitDisabled: false,
   uploadProgress: 0,
   uploadProgressPercent: computed('uploadProgress', function(){

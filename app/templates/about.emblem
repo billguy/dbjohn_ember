@@ -1,0 +1,16 @@
+.float-left
+  h1
+    =model.title
+  small.text-muted
+    span Last updated:&nbsp;
+    =moment-format model.createdAt
+
+if session.isAuthenticated
+  .float-right
+    =link-to "blog-posts.edit" model
+      =fa-icon "pencil" size=2
+
+.clearfix
+
+.blog-post
+  =html-content model.content
