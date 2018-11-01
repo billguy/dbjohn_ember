@@ -6,6 +6,3 @@ each images as |image|
       =link-to "pics.show" image
         =image.title
       p #{image.caption}
-
-.invisible
-  =didLoadMore

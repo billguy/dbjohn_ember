@@ -33,7 +33,7 @@ export default Component.extend({
     this.destroyFancyBox()
   },
 
-  didLoadMore: computed('loadedMore', function(){
+  didLoadMore: computed('images.length', function(){
     this.reinit()
   })
 });

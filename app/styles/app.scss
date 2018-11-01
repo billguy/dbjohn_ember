@@ -84,6 +84,11 @@ body {
   }
 }
 
+.img-fluid{
+  max-width: 100%;
+  height: auto;
+}
+
 .text-muted{
   &:hover {
     color: #999999;

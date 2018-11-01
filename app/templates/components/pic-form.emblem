@@ -1,10 +1,14 @@
-=bs-form model=user multipart=true onSubmit=(action "submit") as |form|
+=bs-form model=model multipart=true onSubmit=(action "submit") as |form|
 
   =form.element label="Title" controlType="text" property="title"
   =ember-tags-input tagsData=model.tagList onAddTag=(action "addTag") onAddTags=(action "addTags") onReplaceTagAtIndex=(action "replaceTagAtIndex") onReplaceTagWithTagsAtIndex=(action "replaceTagWithTagsAtIndex") onRemoveTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
     =tagLabel
   br
   =form.element label="Caption" controlType="textarea" property="caption"
+
+  if model.photo
+    img.thumbnail src=model.msrc alt=model.title
+    br
 
   =form.group validation=Validations
     =form.element label="Photo" controlType="file" property="photo" as |el|

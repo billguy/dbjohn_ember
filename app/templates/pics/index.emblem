@@ -20,6 +20,6 @@ if model.meta.tag_list
 
 #pics.container
   .row
-    =fancy-box images=pics loadedMore=loadedMore
+    =fancy-box images=pics
 
 =pic-pagination loadNextAction=(action "loadNext")

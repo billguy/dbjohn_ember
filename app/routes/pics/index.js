@@ -5,6 +5,12 @@ export default Route.extend(RouteMixin, {
   queryParams: {
     tags: {
       refreshModel: true
+    },
+    lat: {
+      refreshModel: true
+    },
+    lng: {
+      refreshModel: true
     }
   },
   perPage: 24,
@@ -14,6 +20,6 @@ export default Route.extend(RouteMixin, {
 
   setupController(controller, model) {
     controller.set('model', model)
+    controller.set('pics', [].addObjects(model.content))
   }
-
 });
