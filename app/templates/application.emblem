@@ -1,3 +1,6 @@
+=head-layout
+=title "David B. John"
+
 each flashMessages.queue as |flash|
   .alert-fixed
     =flash-message flash=flash

@@ -1,25 +1,22 @@
-h1.hide latest_pic.title
-h2.hide latest_pic.caption
+h1.d-none David B. John
 
 #latest
+  figure.cap-bot
+    =link-to "pics.show" model.pic
+      img.img-fluid src=model.pic.src
+      figcaption
+        =pic-caption pic=model.pic
 
-figure.cap-bot
-  =link-to "pics"
-    .magnify.thumbnail
-      .large style="background: url('');"
-      img.small.lazy-load.img-responsive src="/assets/images/blank.gif"
+.clearfix
 
-      figcaption Caption
-
-.row.marketing.blogs
 hr
-.row
-  .col-sm-12.col-md-6.blog
-    h4 Title
-    .text-muted.small 3 days ago
-    p some text...
+.row.marketing.blogs
+  each model.blogs as |blog|
+    .col-sm-12.col-md-6.blog
+      h4
+        =link-to "blog-posts.show" blog
+          =blog.title
+      .text-muted.small
+        =moment-from-now blog.createdAt
 
-  .col-sm-12.col-md-6.blog
-    h4 Title
-    .text-muted.small 3 days ago
-    p some text...
+      =html-content blog.content

@@ -1,3 +1,5 @@
+=title model.title
+
 .d-flex.justify-content-between.pic-header
   =link-to "pics.show" model.prevPermalink
     img src=model.prevThumbUrl alt=model.prevPermalink height="100" width="100"
@@ -17,15 +19,7 @@ figure#subject.cap-bot
   a href=model.src
     img.img-fluid src=model.src alt=model.title
     figcaption
-      ul.list-unstyled
-        li
-          =moment-format model.picDate
-        if model.camera
-          li #{model.camera}
-        if model.fInfo
-          li #{model.fInfo}
-        if model.location
-          li #{model.location}
+      =pic-caption pic=model
 
 .float-left
   h1 #{model.title}

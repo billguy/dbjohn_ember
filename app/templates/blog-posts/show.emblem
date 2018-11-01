@@ -1,3 +1,5 @@
+=title model.title
+
 .float-left
   h1
     =model.title

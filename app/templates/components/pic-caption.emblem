@@ -1,0 +1,9 @@
+ul.list-unstyled
+  li
+    =moment-format pic.picDate
+  if pic.camera
+    li #{pic.camera}
+  if pic.fInfo
+    li #{pic.fInfo}
+  if pic.location
+    li #{pic.location}
