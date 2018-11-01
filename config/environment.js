@@ -7,8 +7,8 @@ module.exports = function(environment) {
     rootURL: '/',
     host: 'http://localhost:3000',
     locationType: 'auto',
-    google_search_key: '008911115616549592922:7t_vhbi7jpg',
-    analytics_key: 'UA-47829506-1',
+    google_search_key: process.env.SEARCH_KEY,
+    analytics_key: process.env.ANALYTICS_KEY,
     'ember-cli-google': {
       recaptcha: {
         siteKey: process.env.CAPTCHA_KEY
@@ -70,7 +70,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.host = 'https://api.dbjohn.com';
+    ENV.host = 'https://api-dbjohn-com.herokuapp.com';
   }
 
   ENV['ember-simple-auth-token'] = {
