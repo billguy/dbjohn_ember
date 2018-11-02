@@ -45,8 +45,7 @@ export default DS.Model.extend(Validations, {
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   hasCoords: computed('lat,lng', function(){
-    return true
-    // return this.get('lat') && this.get('lng')
+    return this.get('lat') && this.get('lng')
   }),
   camera: computed('make', 'model', function(){
     var string = ''

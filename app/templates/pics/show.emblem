@@ -6,10 +6,10 @@
 
   .d-none.d-sm-block
     if model.hasCoords
-      =g-map lat='29.956505600000003' lng='-90.2111232' zoom=10 as |g|
-        =g.marker lat='29.956505600000003' lng='-90.2111232' onClick=(action "markerClicked" model)
+      =g-map lat=model.lat lng=model.lng zoom=10 as |g|
+        =g.marker lat=model.lat lng=model.lng onClick=(action "markerClicked" model)
     else
-      .h4.hidden-xs.text-muted.text-center.content Map Unavailable
+      .h4.hidden-xs.text-muted.text-center.content.map Map Unavailable
 
 
   =link-to "pics.show" model.nextPermalink
