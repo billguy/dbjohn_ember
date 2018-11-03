@@ -24,6 +24,8 @@ module.exports = function(defaults) {
   app.import('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css');
   app.import('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js');
 
+  app.import('vendor/google-analytics.js')
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
