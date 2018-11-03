@@ -2,7 +2,7 @@ h1.d-none David B. John
 
 #latest
   figure.cap-bot
-    =link-to "pics.show" model.pic
+    =link-to "pics.show" model.pic.permalink
       img.img-fluid src=model.pic.src
       figcaption
         =pic-caption pic=model.pic
@@ -14,7 +14,7 @@ hr
   each model.blogs as |blog|
     .col-sm-12.col-md-6.blog
       h4
-        =link-to "blog-posts.show" blog
+        =link-to "blog-posts.show" blog.permalink
           =blog.title
       .text-muted.small
         =moment-from-now blog.createdAt
