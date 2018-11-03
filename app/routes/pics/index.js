@@ -13,7 +13,7 @@ export default Route.extend(RouteMixin, {
       refreshModel: true
     }
   },
-  perPage: 24,
+  perPage: 9,
   model: function(params) {
     return this.findPaged('pic', params)
   },
