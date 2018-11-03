@@ -46,9 +46,9 @@ each flashMessages.queue as |flash|
         img.inline src="/assets/images/ember.jpg" alt="Ember JS Logo"
   .float-left
     if session.isAuthenticated
-      a href="/logout"
+      a.link{action 'invalidateSession'}
         .text-muted Logout #{currentUser.user.name}
     else
-      a href="/login"
+      =link-to "login"
         .text-muted &nbsp;&copy;&nbsp;DBJohn, LLC
 .clearfix

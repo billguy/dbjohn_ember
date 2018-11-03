@@ -9,6 +9,9 @@ export default Controller.extend({
   actions: {
     searchClicked(){
       this.toggleProperty('isSearching')
+    },
+    invalidateSession() {
+      this.get('session').invalidate();
     }
   }
 });
