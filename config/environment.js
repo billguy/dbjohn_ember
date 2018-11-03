@@ -8,11 +8,26 @@ module.exports = function(environment) {
     host: 'http://localhost:3000',
     locationType: 'auto',
     google_search_key: process.env.SEARCH_KEY,
-    analytics_key: process.env.ANALYTICS_KEY,
     'ember-cli-google': {
       recaptcha: {
         siteKey: process.env.CAPTCHA_KEY
       }
+    },
+    analytics: {
+      integrations: [
+        {
+          name: 'GoogleAnalytics',
+          config: {
+            id: process.env.ANALYTICS_KEY,
+            remarketing: true,
+            ecommerce: true,
+            enhancedEcommerce: false,
+            set: {
+              anonymizeIp: true
+            }
+          }
+        }
+      ]
     },
     moment: {
       outputFormat: 'LLLL'
