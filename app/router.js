@@ -34,6 +34,10 @@ Router.map(function() {
   this.route('blogs', function() {
     this.route('show', { path: '/:id' } )
   });
+  this.route('slogans', function() {
+    this.route('new');
+    this.route('edit', { path: '/:id/edit' } );
+  });
 });
 
 export default Router;

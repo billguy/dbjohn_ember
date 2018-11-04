@@ -7,7 +7,9 @@ each flashMessages.queue as |flash|
 
 .header
   #slogan.float-left
-    a href="/" data-slogan="" David B. John
+    a href="/"
+      span#sloganTitle
+        =liquid-bind sloganTitle
 
   .float-right
     =bs-nav type="pills" as |nav|

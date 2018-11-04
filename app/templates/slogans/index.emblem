@@ -1,0 +1,21 @@
+=title "Slogans"
+
+
+.float-right.h1
+  =link-to "slogans.new"
+    .btn-primary.btn-sm + New Slogan
+
+.float-left
+  h1 Slogans
+
+.clearfix
+
+#slogans.container
+  =each model as |slogan|
+    .row
+      .col-xs-12
+        =slogan.title
+        =link-to "slogans.edit" slogan
+          span edit
+        a.link{action "destroySlogan" slogan}
+          span delete
