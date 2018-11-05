@@ -9,19 +9,25 @@ h1.h4
   a.link{action "clearTags" on="click"}
     span Pics
 
-if model.meta.tag_list
-  ul.list-inline.list-unstyled.tags
-    =each model.meta.tag_list as |tag|
-      li
-        a.link{action "tagSelected" tag on="click"}
-          =tag.name
-          span
-            =tag.taggings_count
+ul.list-inline.list-unstyled.tags
+  =each tagList as |tag|
+    li
+      a.link{action "tagSelected" tag on="click"}
+        =tag.name
+        span
+          =tag.taggings_count
 
 .clearfix
 
-#pics.container
-  .row
-    =fancy-box images=pics
+if isLoading
 
-=pic-pagination loadNextAction=(action "loadNext")
+  =content-placeholders rounded=true as |placeholder|
+    =placeholder.img
+
+else
+
+  #pics.container
+    .row
+      =fancy-box images=pics
+
+  =pic-pagination loadNextAction=(action "loadNext")

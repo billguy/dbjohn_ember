@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
+import { task } from 'ember-concurrency';
 
 export default Route.extend(RouteMixin, {
   queryParams: {
@@ -14,12 +15,14 @@ export default Route.extend(RouteMixin, {
     }
   },
   perPage: 9,
-  model: function(params) {
-    return this.findPaged('pic', params)
-  },
 
-  setupController(controller, model) {
-    controller.set('model', model)
-    controller.set('pics', [].addObjects(model.content))
-  }
+  model(params){
+    return {
+      pics: this.get('picsTask').perform(params)
+    }
+  },
+  picsTask: task(function *(params){
+    let pics = yield this.findPaged('pic', params)
+    return pics;
+  })
 });

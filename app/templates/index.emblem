@@ -1,22 +1,30 @@
 h1.d-none David B. John
 
-#latest
-  figure.cap-bot
-    =link-to "pics.show" model.pic.permalink
-      img.img-fluid src=model.pic.src
-      figcaption
-        =pic-caption pic=model.pic
+if isLoaded
 
-.clearfix
+  #latest
+    figure.cap-bot
+      =link-to "pics.show" pic.permalink
+        img.img-fluid src=pic.src
+        figcaption
+          =pic-caption pic=pic
 
-hr
-.row.marketing.blogs
-  each model.blogs as |blog|
-    .col-sm-12.col-md-6.blog
-      h4
-        =link-to "blog-posts.show" blog.permalink
-          =blog.title
-      .text-muted.small
-        =moment-from-now blog.createdAt
+  .clearfix
 
-      =html-content blog.content
+  hr
+  .row.marketing.blogs
+    each blogs as |blog|
+      .col-sm-12.col-md-6.blog
+        h4
+          =link-to "blog-posts.show" blog.permalink
+            =blog.title
+        .text-muted.small
+          =moment-from-now blog.createdAt
+
+        =html-content blog.content
+
+else
+
+  =content-placeholders rounded=true as |placeholder|
+    =placeholder.img
+    =placeholder.text lines=5
