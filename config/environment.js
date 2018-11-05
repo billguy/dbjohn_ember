@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'dbjohn-ember',
     environment,
     rootURL: '/',
+    siteURL: 'https://dbjohn.com',
     host: 'http://localhost:3000',
     locationType: 'auto',
     google_search_key: process.env.SEARCH_KEY,

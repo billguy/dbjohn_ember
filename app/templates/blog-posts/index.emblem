@@ -29,7 +29,7 @@ if model.meta.tag_list
       .text-muted.small
         =moment-format post.createdAt
         span &nbsp;•&nbsp;
-        =disqus-comment-count identifier=post.title
+        =disqus-comment-count identifier=post.discusIdentifier
       p
         =html-content post.content
 

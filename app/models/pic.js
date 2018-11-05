@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
 import { computed } from '@ember/object';
+import config from '../config/environment';
 
 const Validations = buildValidations({
   title: [
@@ -73,6 +74,9 @@ export default DS.Model.extend(Validations, {
   }),
   picDate: computed('createdAt', 'dateTaken', function(){
     return this.dateTaken || this.createdAt
+  }),
+  discusIdentifier: computed('permalink', function(){
+    return `${config.siteURL}/pics/${this.get('permalink')}`
   })
 
 });
