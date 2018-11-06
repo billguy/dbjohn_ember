@@ -5,7 +5,7 @@
     =model.title
   small.text-muted
     span Last updated:&nbsp;
-    =moment-format model.createdAt
+    =moment-format model.updatedAt
 
 if session.isAuthenticated
   .float-right
