@@ -26,5 +26,14 @@ if isLoaded
 else
 
   =content-placeholders rounded=true as |placeholder|
-    =placeholder.img
-    =placeholder.text lines=5
+
+    #latest
+      figure.cap-bot
+      =placeholder.img
+
+    hr
+    .row.marketing.blogs
+      .col-sm-12.col-md-6.blog
+        =placeholder.text
+      .col-sm-12.col-md-6.blog
+        =placeholder.text

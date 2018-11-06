@@ -9,22 +9,50 @@ h1.h4
   a.link{action "clearTags" on="click"}
     span Pics
 
-ul.list-inline.list-unstyled.tags
-  =each tagList as |tag|
-    li
-      a.link{action "tagSelected" tag on="click"}
-        =tag.name
-        span
-          =tag.taggings_count
-
 .clearfix
 
 if isLoading
 
   =content-placeholders rounded=true as |placeholder|
-    =placeholder.img
+
+    .row
+      .col-12
+        =placeholder.img
+    br
+    #pics.container
+      .row
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
+      br
+      .row
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
+      br
+      .row
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
+        .col-xs-12.col-md-4
+          =placeholder.img
 
 else
+
+  ul.list-inline.list-unstyled.tags
+    =each tagList as |tag|
+      li
+        a.link{action "tagSelected" tag on="click"}
+          =tag.name
+          span
+            =tag.taggings_count
 
   #pics.container
     .row
