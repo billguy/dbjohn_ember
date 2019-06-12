@@ -25,6 +25,7 @@ export default Route.extend(ApplicationRouteMixin, {
     })
     return slogan;
   }),
+
   beforeModel() {
     return this._loadCurrentUser()
   },

@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import $ from 'jquery';
+import jQuery from 'jquery';
 import { computed } from '@ember/object';
 
 export default Component.extend({
@@ -7,16 +7,16 @@ export default Component.extend({
   images: undefined,
 
   initFancyBox(){
-    let gallery = $(".fancybox").fancybox({
+    let gallery = jQuery(".fancybox").fancybox({
       caption : function() {
-        return $(this).closest('figure').find('figcaption').html();
+        return jQuery(this).closest('figure').find('figcaption').html();
       }
     })
     this.set('_fancyBoxInstance', gallery)
   },
 
   destroyFancyBox(){
-    $.fancybox.destroy();
+    jQuery.fancybox.destroy();
   },
 
   didInsertElement() {
