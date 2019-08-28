@@ -16,7 +16,7 @@ if isLoaded
     each blogs as |blog|
       .col-sm-12.col-md-6.blog
         h4
-          =link-to "blog-posts.show" blog.permalink
+          =link-to "blog-posts.show" blog
             =blog.title
         .text-muted.small
           =moment-from-now blog.createdAt
