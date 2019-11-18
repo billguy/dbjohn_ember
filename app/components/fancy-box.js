@@ -34,6 +34,6 @@ export default Component.extend({
   },
 
   didLoadMore: computed('images.length', function(){
-    this.reinit()
+    return this.reinit()
   })
 });
