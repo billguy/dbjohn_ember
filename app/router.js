@@ -2,6 +2,7 @@ import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import { computed } from '@ember/object';
 
+<<<<<<< HEAD
 const Router = EmberRouter.extend({
   location: config.locationType,
   rootURL: config.rootURL,
@@ -12,6 +13,12 @@ const Router = EmberRouter.extend({
     }
   })
 });
+=======
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
+>>>>>>> c07a9ad... message
 
 Router.map(function() {
   this.route('login');
@@ -39,5 +46,3 @@ Router.map(function() {
     this.route('edit', { path: '/:id/edit' } );
   });
 });
-
-export default Router;
