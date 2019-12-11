@@ -14,6 +14,10 @@ module.exports = function(environment) {
         siteKey: process.env.CAPTCHA_KEY
       }
     },
+    'ember-froala-editor': {
+      key: process.env.FROALA_KEY,
+      linkConvertEmailAddress: false
+    },
     analytics: {
       integrations: [
         {
