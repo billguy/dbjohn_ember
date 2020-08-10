@@ -15,6 +15,7 @@ export default FroalaEditorComponent.extend({
       imageManagerDeleteMethod: 'DELETE',
       imageUploadURL: config.host + '/assets',
       imageUploadParam: 'asset[attachment]',
+      htmlRemoveTags: [],
       requestHeaders: {
         Authorization: `Bearer ${this.get('session.data.authenticated.access')}`
       }
