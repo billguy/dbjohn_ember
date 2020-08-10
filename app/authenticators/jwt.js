@@ -1,4 +1,4 @@
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import JWT from 'ember-simple-auth-token/authenticators/jwt';
 
 export default JWT.extend({

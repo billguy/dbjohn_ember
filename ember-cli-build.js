@@ -15,6 +15,9 @@ module.exports = function(defaults) {
     },
     'ember-google-maps': {
       only: ['marker', 'info-window']
+    },
+    'ember-fetch': {
+      preferNative: true
     }
   });
 

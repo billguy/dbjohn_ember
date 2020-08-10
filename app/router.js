@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import config from 'dbjohn-ember/config/environment';
 import { computed } from '@ember/object';
 
 const Router = EmberRouter.extend({
