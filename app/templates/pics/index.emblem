@@ -1,4 +1,4 @@
-=title "Pics"
+=page-title "Pics"
 
 if session.isAuthenticated
   .float-right.h1

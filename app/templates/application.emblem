@@ -1,5 +1,4 @@
-=head-layout
-=title "David B. John"
+=page-title "David B. John"
 
 each flashMessages.queue as |flash|
   .alert-fixed
