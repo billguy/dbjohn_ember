@@ -21,7 +21,7 @@ if model.meta.tag_list
 .clearfix
 
 #posts.row
-  =each model.content as |post|
+  =each model as |post|
     .col-sm-6.blog
       h4
         =link-to "blog-posts.show" post
@@ -29,10 +29,12 @@ if model.meta.tag_list
       .text-muted.small
         =moment-format post.createdAt
         span &nbsp;•&nbsp;
-        =disqus-comment-count identifier=post.discusIdentifier
+        /=disqus-comment-count identifier=post.discusIdentifier
       p
         =html-content post.content
 
 .float-left
-  =page-numbers content=model
+
+  =page-numbers content=model page=page
+
 .clearfix

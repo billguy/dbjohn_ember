@@ -49,4 +49,4 @@ p #{model.caption}
 
 br
 
-=disqus-comments identifier=model.discusIdentifier
+/=disqus-comments identifier=model.discusIdentifier

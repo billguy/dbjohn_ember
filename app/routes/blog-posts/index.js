@@ -1,14 +1,15 @@
 import Route from '@ember/routing/route';
-import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 
-export default Route.extend(RouteMixin, {
+export default Route.extend({
   queryParams: {
+    page: {
+      refreshModel: true
+    },
     tags: {
       refreshModel: true
     }
   },
-  perPage: 4,
   model(params){
-    return this.findPaged('blog-post', params)
+    return this.store.query('blog-post', params)
   }
 });

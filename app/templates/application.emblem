@@ -9,7 +9,7 @@ each flashMessages.queue as |flash|
   #slogan.float-left
     =link-to "index"
       span#sloganTitle
-        =liquid-bind sloganTitle
+        =sloganTitle
 
   .float-right
     =bs-nav type="pills" as |nav|

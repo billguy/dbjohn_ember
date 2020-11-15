@@ -1,28 +1,28 @@
 import Route from '@ember/routing/route';
-import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 import { task } from 'ember-concurrency';
 
-export default Route.extend(RouteMixin, {
-  queryParams: {
-    tags: {
-      refreshModel: true
-    },
-    lat: {
-      refreshModel: true
-    },
-    lng: {
-      refreshModel: true
-    }
-  },
-  perPage: 9,
+export default Route.extend({
 
-  model(params){
+  model(){
     return {
-      pics: this.get('picsTask').perform(params)
+      pics: this.get('picsTask')
     }
   },
+
+  setupController(controller){
+    controller.set('picsTask', this.get('picsTask'))
+    controller.loadPics()
+  },
+
   picsTask: task(function *(params){
-    let pics = yield this.findPaged('pic', params)
-    return pics;
-  })
+    const records = yield this.store.query('pic', params)
+    const controller = this.get('controller')
+    controller.get('pics').pushObjects(records.toArray())
+    controller.set('isLoading', false)
+    controller.set('tagList', records.get('meta.tag_list'))
+    const totalPages = records.get('meta.total_pages')
+    if (controller.get('page') == totalPages)
+      controller.set('canLoadMore', false)
+  }).restartable()
+
 });

@@ -1,8 +1,0 @@
-each images as |image|
-  figure
-    a.fancybox href=image.src data-fancybox="gallery" data-width=image.w data-height=image.h
-      img.thumb src=image.msrc alt=image.title
-    figcaption
-      =link-to "pics.show" image
-        =image.title
-      p #{image.caption}

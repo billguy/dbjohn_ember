@@ -56,6 +56,22 @@ else
 
   #pics.container
     .row
-      =fancy-box images=pics
+      =each pics as |pic|
+        figure
+          img.thumb{{ on "click" (action (mut currentPic) pic)}} src=pic.msrc alt=pic.title
+          figcaption
+            =link-to "pics.show" pic.permalink
+              =pic.title
+            p #{pic.caption}
 
-  =pic-pagination loadNextAction=(action "loadNext")
+  span{in-viewport onEnter=(fn this.loadNext) }
+
+=bs-modal open=currentPic size="lg" onHidden=(action (mut currentPic) false) as |modal|
+  =modal.header
+    h4.modal-title
+      =link-to "pics.show" currentPic.permalink
+        =currentPic.title
+  =modal.body
+    .d-flex.justify-content-center
+      =link-to "pics.show" currentPic.permalink
+        img src=currentPic.src alt=currentPic.title
