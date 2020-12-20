@@ -1,7 +1,7 @@
 =bs-form model=model multipart=true onSubmit=(action "submit") as |form|
 
   =form.element label="Title" controlType="text" property="title"
-  =ember-tags-input tagsData=model.tagList onAddTag=(action "addTag") onAddTags=(action "addTags") onReplaceTagAtIndex=(action "replaceTagAtIndex") onReplaceTagWithTagsAtIndex=(action "replaceTagWithTagsAtIndex") onRemoveTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
+  =tag-input tags=model.tagList addTag=(action "addTag") removeTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
     =tagLabel
   br
   =form.element label="Caption" controlType="textarea" property="caption"

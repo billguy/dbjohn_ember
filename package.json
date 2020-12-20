@@ -65,7 +65,7 @@
     "ember-resolver": "^8.0.2",
     "ember-simple-auth-token": "^4.0.8",
     "ember-source": "~3.22.0",
-    "ember-tags-input": "^0.3.0",
+    "ember-tags-input": "calvinlough/ember-tag-input",
     "ember-template-lint": "^2.14.0",
     "eslint": "^7.11.0",
     "eslint-plugin-ember": "^9.3.0",

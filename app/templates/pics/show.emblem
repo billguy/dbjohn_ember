@@ -33,14 +33,14 @@ figure#subject.cap-bot
 
 .float-right
   if session.isAuthenticated
-    =bs-modal-simple title="Please confirm"  renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=deletePic onSubmit=(action "deletePic" model) onHide=(action (mut deletePic) false)
+    =bs-modal-simple title="Please confirm" renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=shouldDelete onSubmit=(action "deletePic" model) onHide=(action (mut shouldDelete) false)
       p You're about to delete '#{model.title}'. Are you sure?
 
     .float-right
       =link-to "pics.edit" model
         =fa-icon "pencil" size=2
       span &nbsp;
-      span.text-danger{action (mut deletePic) true} style="cursor: pointer"
+      span.text-danger{action (mut shouldDelete) true} style="cursor: pointer"
         =fa-icon "trash" size=2
 
 .clearfix

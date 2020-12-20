@@ -3,6 +3,7 @@ import { inject } from '@ember/service';
 
 export default Controller.extend({
   session: inject('session'),
+  shouldDelete: false,
   actions: {
     markerClicked(pic){
       this.transitionToRoute("pics", { queryParams: { lat: pic.lat, lng: pic.lng }})
