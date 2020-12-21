@@ -12,9 +12,6 @@ export default Component.extend({
     return this.get('page') < this.get('totalPages')
   }),
 
-  didInsertElement(){
-    console.log('test')
-  },
   actions: {
     incrementPage(v){
       const page = this.get('page')

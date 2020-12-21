@@ -6,6 +6,8 @@ import { inject } from '@ember/service';
 export default Component.extend({
 
   activeStorage: inject(),
+  flashMessages: inject(),
+  router: inject(),
   submitDisabled: false,
   uploadProgress: 0,
   uploadProgressPercent: computed('uploadProgress', function(){
@@ -17,8 +19,13 @@ export default Component.extend({
   }),
 
   actions: {
-    submit() {
-      this.submitAction(this.model)
+    submit(model) {
+      return model.save().then(()=>{
+        this.router.transitionTo('pics.show', model.id)
+      }).catch((reason) => {
+        if (reason.json)
+          this.flashMessages.danger(reason.json.error)
+      });
     },
     uploadPic(event) {
       const files = event.target.files

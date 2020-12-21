@@ -11,6 +11,7 @@ export default Controller.extend({
     deletePic(pic){
       pic.destroyRecord().then(() => {
         this.transitionToRoute("pics")
+        this.set('shouldDelete', false)
         this.flashMessages.success(`${pic.title} deleted`)
       });
     }

@@ -10,7 +10,11 @@
   .sr-only
     =form.element label="Content" controlType="textarea" property="content"
 
-  =froala-editor content=model.content update=(action (mut model.content))
+  =froala-editor content=(html-safe model.content) update=(action (mut model.content))
 
   br
-  =bs-button defaultText="Submit" type="primary" buttonType="submit"
+  =bs-button type="primary" buttonType="submit" disabled=form.isSubmitting
+    if form.isSubmitting
+      span Please wait...
+    else
+      span Submit

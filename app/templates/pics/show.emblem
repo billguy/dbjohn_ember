@@ -37,11 +37,9 @@ figure#subject.cap-bot
       p You're about to delete '#{model.title}'. Are you sure?
 
     .float-right
-      =link-to "pics.edit" model
-        =fa-icon "pencil" size=2
-      span &nbsp;
-      span.text-danger{action (mut shouldDelete) true} style="cursor: pointer"
-        =fa-icon "trash" size=2
+      =link-to "pics.edit" model | edit
+      span &nbsp;|&nbsp;
+      span.text-danger{action (mut shouldDelete) true} style="cursor: pointer" delete
 
 .clearfix
 

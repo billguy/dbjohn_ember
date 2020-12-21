@@ -1,5 +1,5 @@
 =bs-form model=model multipart=true onSubmit=(action "submit") as |form|
-
+  =form.element label="Active" controlType="checkbox" property="published"
   =form.element label="Title" controlType="text" property="title"
   =tag-input tags=model.tagList addTag=(action "addTag") removeTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
     =tagLabel
@@ -20,4 +20,8 @@
           .invalid-feedback.d-block
             =error.message
 
-  =bs-button defaultText="Submit" type="primary" buttonType="submit" disabled=submitDisabled
+  =bs-button type="primary" buttonType="submit" disabled=submitDisabled
+    if form.isSubmitting
+      span Please wait...
+    else
+      span Submit
