@@ -19,7 +19,7 @@ figure#subject.cap-bot
   a href=model.src
     img.img-fluid src=model.src alt=model.title
     figcaption
-      =pic-caption pic=model
+      =pic-caption pic=this.model
 
 .float-left
   h1 #{model.title}
