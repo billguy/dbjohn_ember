@@ -11,6 +11,9 @@ if isLoaded
 
   .clearfix
 
+  br
+  br
+
   .row.marketing.blogs
     each blogs as |blog|
       .col-sm-12.col-md-6.blog
