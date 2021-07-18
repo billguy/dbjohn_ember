@@ -1,17 +1,10 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'dbjohn-ember/config/environment';
-import { computed } from '@ember/object';
 
-const Router = EmberRouter.extend({
-  location: config.locationType,
-  rootURL: config.rootURL,
-  redirects: computed(function(){
-    return {
-      'blogs.index': 'blog-posts',
-      'blogs.show': 'blog-posts.show'
-    }
-  })
-});
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
 Router.map(function() {
   this.route('login');
@@ -39,5 +32,3 @@ Router.map(function() {
     this.route('edit', { path: '/:id/edit' } );
   });
 });
-
-export default Router;
