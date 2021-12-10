@@ -1,4 +1,4 @@
-import ActiveStorage from 'ember-active-storage/services/active-storage';
+import ActiveStorage from '@algonauti/ember-active-storage/services/active-storage';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 

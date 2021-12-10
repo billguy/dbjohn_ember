@@ -23,6 +23,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@algonauti/ember-active-storage": "^2.1.1",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.2.5",
     "@glimmer/component": "^1.0.4",
@@ -31,7 +32,6 @@
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.6.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-active-storage": "^1.0.1",
     "ember-auto-import": "^1.11.3",
     "ember-bootstrap": "^4.9.0",
     "ember-bootstrap-cp-validations": "^2.1.0",

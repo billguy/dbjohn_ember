@@ -8,7 +8,6 @@ export default Component.extend({
   activeStorage: inject(),
   flashMessages: inject(),
   router: inject(),
-  submitDisabled: false,
   uploadProgress: 0,
   uploadProgressPercent: computed('uploadProgress', function(){
     let progress = this.uploadProgress
@@ -31,7 +30,6 @@ export default Component.extend({
       const files = event.target.files
       let pic = this.get('model')
       if (files) {
-        this.set('submitDisabled', true)
         const directUploadURL = config.host + '/rails/active_storage/direct_uploads'
         let activeStorage = this.activeStorage
         for (var i = 0; i < files.length; i++) {
@@ -40,9 +38,7 @@ export default Component.extend({
               this.set('uploadProgress', progress)
             }
           }).then( (blob) => {
-            const signedId = blob.get('signedId')
-            pic.set('photo', signedId)
-            this.set('submitDisabled', false)
+            pic.set('photo', blob.signedId)
           });
         }
       }

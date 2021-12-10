@@ -6,21 +6,17 @@
   br
   =form.element label="Caption" controlType="textarea" property="caption"
 
-  if model.photo
+  =form.element label="Photo" controlType="file" property="photo" as |el|
+    .input-group
+      <input class="form-control" accept="image/*" type="file" onChange={{action "uploadPic"}} id=#{el.id} style="display:inline-block;"/>
+      span
+        =uploadProgressPercent
+
+  if model.msrc
     img.thumbnail src=model.msrc alt=model.title
     br
 
-  =form.group validation=Validations
-    =form.element label="Photo" controlType="file" property="photo" as |el|
-      .input-group
-        <input class="form-control" accept="image/*" type="file" onChange={{action "uploadPic"}} id=#{el.id} style="display:inline-block;"/>
-        span
-          =uploadProgressPercent
-        =each user.errors.recording as |error|
-          .invalid-feedback.d-block
-            =error.message
-
-  =bs-button type="primary" buttonType="submit" disabled=submitDisabled
+  =bs-button type="primary" buttonType="submit"
     if form.isSubmitting
       span Please wait...
     else
