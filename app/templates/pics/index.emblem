@@ -11,7 +11,7 @@ h1.h4
 
 .clearfix
 
-if isLoading
+unless this.isLoaded
 
   =content-placeholders rounded=true as |placeholder|
 
@@ -64,7 +64,7 @@ else
               =pic.title
             p #{pic.caption}
 
-  span{in-viewport onEnter=(fn this.loadNext) }
+  div#load-next{did-insert this.setupInViewport}
 
 =bs-modal open=currentPic size="lg" onHidden=(action (mut currentPic) false) as |modal|
   =modal.header
