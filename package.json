@@ -68,6 +68,7 @@
     "ember-resolver": "^8.0.2",
     "ember-simple-auth-token": "^5.2.2",
     "ember-source": "~3.27.2",
+    "ember-tag-input": "^3.0.0",
     "ember-template-lint": "^3.4.2",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
