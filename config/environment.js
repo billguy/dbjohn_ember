@@ -90,7 +90,8 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.host = 'https://api-dbjohn-com.herokuapp.com';
+    // ENV.host = 'https://api-dbjohn-com.herokuapp.com';
+    ENV.host = 'https://apidbjohncom-production.up.railway.app';
   }
 
   ENV['ember-simple-auth-token'] = {
