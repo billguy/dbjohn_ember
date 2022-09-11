@@ -21,8 +21,8 @@ module.exports = function (defaults) {
     }
   });
 
-  app.import('node_modules/ember-tag-input/vendor/styles/eti-svg-icons.css');
-  app.import('node_modules/ember-tag-input/vendor/styles/ember-tag-input.css');
+  // app.import('node_modules/ember-tag-input/vendor/styles/eti-svg-icons.css');
+  // app.import('node_modules/ember-tag-input/vendor/styles/ember-tag-input.css');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
