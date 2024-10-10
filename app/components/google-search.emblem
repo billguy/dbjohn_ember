@@ -1,0 +1,5 @@
+.text-muted.h3
+  =this.searchText
+  
+#results
+  <gcse:searchresults-only gname="results"></gcse:searchresults-only>

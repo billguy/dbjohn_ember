@@ -1,0 +1,50 @@
+=page-title this.model.title
+
+.d-flex.justify-content-between.pic-header
+  =link-to route="pics.show" model=this.model.prevPermalink
+    img src=this.model.prevThumbUrl alt=this.model.prevPermalink height="100" width="100"
+
+  .d-none.d-sm-block
+    if this.model.hasCoords
+      =g-map lat=this.model.lat lng=this.model.lng zoom=10 as |g|
+        =g.marker lat=this.model.lat lng=this.model.lng onClick=(action "markerClicked" this.model)
+    else
+      .h4.hidden-xs.text-muted.text-center.content.map Map Unavailable
+
+
+  =link-to route="pics.show" model=this.model.nextPermalink
+    img src=this.model.nextThumbUrl alt=this.model.nextPermalink height="100" width="100"
+
+figure#subject.cap-bot
+  a href=this.model.src
+    img.img-fluid src=this.model.src alt=this.model.title
+    figcaption
+      =pic-caption pic=this.model
+
+.float-left
+  h1 #{this.model.title}
+  ul.list-inline.list-unstyled.tags
+    =each this.model.tags as |tag|
+      li
+        =link-to route="pics" query=(hash tags=tag.name)
+          =tag.name
+          span
+            =tag.taggings_count
+
+.float-right
+  if this.session.isAuthenticated
+    =bs-modal-simple title="Please confirm" renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=this.shouldDelete onSubmit=(action "deletePic" this.model) onHide=(action (mut this.shouldDelete) false)
+      p You're about to delete '#{this.model.title}'. Are you sure?
+
+    .float-right
+      =link-to route="pics.edit" model=this.model | edit
+      span &nbsp;|&nbsp;
+      span.text-danger{action (mut this.shouldDelete) true} style="cursor: pointer" delete
+
+.clearfix
+
+p #{this.model.caption}
+
+br
+
+/=disqus-comments identifier=this.model.discusIdentifier

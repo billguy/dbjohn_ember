@@ -1,0 +1,19 @@
+@import "caption";
+@import "magnifier";
+
+h4{
+  margin-bottom: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  #latest{
+    min-height: 363px;
+  }
+}
+
+.blogs{
+  .blog{
+    height: 190px;
+    overflow: hidden;
+  }
+}

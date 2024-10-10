@@ -1,0 +1,62 @@
+=page-title "David B. John"
+
+main.container role="main"
+  each this.flashMessages.queue as |flash|
+    .alert-fixed
+      =flash-message flash=flash
+
+  .header
+    #slogan.float-left{did-insert this.didInsert}
+      =link-to route="index"
+        if this.slogans.length
+          each this.slogans as |slogan|
+            span#sloganTitle.fade-in-text
+              =slogan.title
+        else
+          span#sloganTitle.fade-in-text David B. John
+
+    .float-right
+      =bs-nav type="pills" as |nav|
+        unless this.isSearching
+          =nav.item
+            =nav.link-to route="pics"
+              span Pics
+          =nav.item
+            =nav.link-to route="blog-posts"
+              span Blog
+          =nav.item
+            =nav.link-to route="about"
+              span About
+
+        =nav.item
+
+          input onkeydown=this.doSearch type="text" class=this.searchBoxClasses placeholder="search" value=this.q
+
+          button.btn.btn-link{action "searchClicked"} type="button"
+            if this.isSearching
+              img src="/assets/images/cancel.png"
+            else
+              img src="/assets/images/search.png"
+
+    .clearfix
+
+  #content
+    if this.isSearching
+      =google-search q=this.q
+    else
+      =outlet
+
+  .footer
+    .float-right
+        a href="https://rubyonrails.org/"
+          img.inline src="/assets/images/rails.jpg" alt="Ruby on Rails Logo"
+        a href="https://emberjs.com/"
+          img.inline src="/assets/images/ember.jpg" alt="Ember JS Logo"
+    .float-left
+      if this.session.isAuthenticated
+        a.link{action 'invalidateSession'}
+          .text-muted Logout #{this.currentUser.user.name}
+      else
+        =link-to route="login"
+          .text-muted &nbsp;&copy;&nbsp;DBJohn, LLC
+  .clearfix

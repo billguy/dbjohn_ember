@@ -1,0 +1,3 @@
+h1 Editing '#{this.model.title}'
+
+=post-form model=this.model

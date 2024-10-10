@@ -1,0 +1,72 @@
+=page-title "Pics"
+
+if this.session.isAuthenticated
+  .float-right.h1
+    =link-to route="pics.new"
+      .btn-primary.btn-sm + New Pic
+
+h1.h4
+  a.link{action "clearTags" on="click"}
+    span Pics
+
+.clearfix
+
+unless this.isLoaded
+
+  .row
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+
+  br
+  .row
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+
+  br
+  .row
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+    .col-sm-4
+      .ph-picture
+
+else
+
+  ul.list-inline.list-unstyled.tags
+    =each this.tagList as |tag|
+      li
+        a.link{action "tagSelected" tag on="click"}
+          =tag.name
+          span
+            =tag.taggings_count
+
+  #pics.container
+    .row
+      =each this.pics as |pic|
+        figure
+          img.thumb{{ on "click" (action (mut this.currentPic) pic)}} src=pic.msrc alt=pic.title
+          figcaption
+            =link-to route="pics.show" model=pic
+              =pic.title
+            p #{pic.caption}
+
+  div#load-next{did-insert this.setupInViewport}
+
+=bs-modal open=this.currentPic size="lg" onHidden=(action (mut this.currentPic) false) as |modal|
+  =modal.header
+    h4.modal-title
+      =link-to route="pics.show" model=this.currentPic
+        =this.currentPic.title
+  =modal.body
+    .d-flex.justify-content-center
+      =link-to route="pics.show" model=this.currentPic
+        img src=this.currentPic.src alt=this.currentPic.title

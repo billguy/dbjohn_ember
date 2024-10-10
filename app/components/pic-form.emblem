@@ -1,0 +1,23 @@
+=bs-form model=this.args.model multipart=true onSubmit=this.submit as |form|
+  =form.element label="Active" controlType="checkbox" property="published"
+  =form.element label="Title" controlType="text" property="title"
+  =tag-input tags=this.args.model.tagList addTag=(action "addTag") removeTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
+    =tagLabel
+  br
+  =form.element label="Caption" controlType="textarea" property="caption"
+
+  =form.element label="Photo" controlType="file" property="photo" as |el|
+    .input-group
+      <input class="form-control" accept="image/*" type="file" {{on "change" (fn this.uploadPic)}} id=#{el.id} style="display:inline-block;"/>
+      span
+        =this.uploadProgressPercent
+
+  if this.args.model.msrc
+    img.thumbnail src=this.args.model.msrc alt=this.args.model.title
+    br
+
+  =form.submitButton
+    if form.isSubmitting
+      span Please wait...
+    else
+      span Submit

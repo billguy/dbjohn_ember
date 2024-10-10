@@ -1,0 +1,13 @@
+=page-title "Contact me"
+
+h1 Contact
+
+=bs-form model=this.model onSubmit=(action "submit") as |form|
+
+  =form.element label="Your name" controlType="text" property="name"
+  =form.element label="Your email" controlType="text" property="email"
+  =form.element label="Message" controlType="textarea" property="message"
+
+  =g-recaptcha-v2 verified=(action (mut this.model.response))
+  br
+  =bs-button defaultText="Submit" type="primary" buttonType="submit"

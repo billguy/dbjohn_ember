@@ -1,0 +1,40 @@
+=page-title "Blogs"
+
+if this.session.isAuthenticated
+  .float-right.h1
+    =link-to route="blog-posts.new"
+      .btn-primary.btn-sm + New Post
+
+h1.h4
+  a.link{action "clearTags" on="click"}
+    span Blog posts
+
+if this.model.meta.tag_list
+  ul.list-inline.list-unstyled.tags
+    =each this.model.meta.tag_list as |tag|
+      li
+        a.link{action "tagSelected" tag on="click"}
+          =tag.name
+          span
+            =tag.taggings_count
+
+.clearfix
+
+#posts.row
+  =each this.model as |post|
+    .col-sm-6.blog
+      h4
+        =link-to route="blog-posts.show" model=post
+          =post.title
+      .text-muted.small
+        =moment-format post.createdAt
+        span &nbsp;•&nbsp;
+        /=disqus-comment-count identifier=post.discusIdentifier
+      p
+        =html-content post.content
+
+.float-left
+
+  =page-numbers controller=this
+
+.clearfix

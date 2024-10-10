@@ -1,0 +1,3 @@
+h1 Editing '#{this.model.title}'
+
+=pic-form model=this.model

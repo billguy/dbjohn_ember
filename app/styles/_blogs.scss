@@ -1,0 +1,22 @@
+@import "token_tags";
+
+@media screen and (min-width: 768px) {
+  h1, .h1{
+    margin-top: 0px;
+  }
+  .row{
+    .col-md-6{
+      min-height: 150px;
+    }
+  }
+}
+
+h4{
+  margin-bottom: 0px;
+}
+
+.blog{
+  max-height: 300px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,18 @@
+=page-title "About"
+
+.float-left
+  h1
+    =this.model.title
+  small.text-muted
+    span Last updated:&nbsp;
+    =moment-format this.model.updatedAt
+
+if this.session.isAuthenticated
+  .float-right
+    =link-to route="blog-posts.edit" model=this.model | edit
+
+.clearfix
+
+.blog-post
+  =html-content this.model.content
+  

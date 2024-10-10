@@ -1,0 +1,31 @@
+=page-title this.model.title
+
+.float-left
+  h1
+    =this.model.title
+  small.text-muted
+    =moment-format this.model.createdAt
+
+if this.session.isAuthenticated
+
+  =bs-modal-simple title="Please confirm" renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=this.shouldDelete onSubmit=(action "deletePost" this.model) onHide=(action (mut this.shouldDelete) false)
+    p You're about to delete '#{this.model.title}'. Are you sure?
+
+  .float-right
+    =link-to route="blog-posts.edit" model=this.model | edit
+    span &nbsp;|&nbsp;
+    span.text-danger{action (mut this.shouldDelete) true} style="cursor: pointer" delete
+
+.clearfix
+
+ul.list-inline.list-unstyled.tags
+  =each this.model.tags as |tag|
+    li
+      =link-to route="blog-posts" query=(hash tags=tag.name)
+        =tag.name
+        span #{tag.taggings_count}
+
+.blog-post
+  =html-content this.model.content
+
+/=disqus-comments identifier=this.model.discusIdentifier

@@ -1,0 +1,7 @@
+=bs-form model=this.args.model multipart=true onSubmit=this.submit as |form|
+  =form.element label="Title" controlType="text" property="title"
+  =form.submitButton
+    if form.isSubmitting
+      span Please wait...
+    else
+      span Submit

@@ -1,0 +1,40 @@
+h1.d-none David B. John
+
+if this.isLoaded
+
+  #latest
+    figure.cap-bot
+      each this.pics as |pic|
+        =link-to route="pics.show" model=pic
+          img.img-fluid src=pic.src
+          figcaption
+            =pic-caption pic=pic
+
+  .clearfix
+
+  br
+  br
+
+  .row.marketing.blogs
+    each this.blogs as |blog|
+      .col-sm-12.col-md-6.blog
+        h4
+          =link-to route="blog-posts.show" model=blog
+            =blog.title
+        .text-muted.small
+          =moment-from-now blog.createdAt
+
+        =html-content blog.content
+
+else
+
+  #latest
+    figure.cap-bot.ph-picture
+
+  hr
+  .row.marketing.blogs
+    .col-sm-12.col-md-6.blog
+      .ph-picture
+
+    .col-sm-12.col-md-6.blog
+      .ph-picture
