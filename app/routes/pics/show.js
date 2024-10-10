@@ -6,6 +6,7 @@ export default class ShowRoute extends Route {
   @service store
 
   model(params) {
-    return this.store.findRecord('pic', params.id, { reload: true });
+    return this.store.findRecord('pic', params.id)
   }
+
 }

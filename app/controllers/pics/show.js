@@ -26,4 +26,11 @@ export default class PicShowController extends Controller {
       this.flashMessages.success(`${pic.title} deleted`);
     });
   }
+
+  @action
+  didInsert(){
+    if (this.model.nextPermalink == null || this.model.prevPermalink == null)
+      this.model.reload()
+  }
+
 }

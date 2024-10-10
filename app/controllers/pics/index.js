@@ -92,4 +92,5 @@ export default class PicsIndexController extends Controller {
     this.inViewport.stopWatching(loader);
     super.willDestroy(...arguments);
   }
+
 }
