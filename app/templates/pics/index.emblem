@@ -13,31 +13,34 @@ h1.h4
 
 unless this.isLoaded
 
-  .row
-    .col-sm-4
+  .ph-item
+    .ph-picture
+
+  .ph-item
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
 
-  br
-  .row
-    .col-sm-4
+  .ph-item
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
 
-  br
-  .row
-    .col-sm-4
+  .ph-item
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
-    .col-sm-4
+    .ph-col-4
       .ph-picture
+
+
 
 else
 

@@ -29,12 +29,13 @@ if this.isLoaded
 else
 
   #latest
-    figure.cap-bot.ph-picture
+    .ph-item
+      figure.cap-bot.ph-picture
 
   hr
-  .row.marketing.blogs
-    .col-sm-12.col-md-6.blog
+  .row
+    .col-sm-12.col-md-6.blog.ph-item
       .ph-picture
 
-    .col-sm-12.col-md-6.blog
+    .col-sm-12.col-md-6.blog.ph-item
       .ph-picture
