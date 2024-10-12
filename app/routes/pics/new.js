@@ -2,8 +2,7 @@ import AuthenticatedRoute from '../authenticated';
 import { inject as service } from '@ember/service';
 
 export default class NewRoute extends AuthenticatedRoute {
-
-  @service store
+  @service store;
 
   model() {
     return this.store.createRecord('pic');

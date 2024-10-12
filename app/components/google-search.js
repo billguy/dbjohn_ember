@@ -3,14 +3,11 @@ import config from '../config/environment';
 import { tracked } from '@glimmer/tracking';
 
 export default class GoogleSearch extends Component {
-
   @tracked loaded = false;
 
   get searchText() {
-    if (this.args && this.args.q) 
-      return `Searching "${this.args}"`
-    else
-      return 'Enter search term'
+    if (this.args && this.args.q) return `Searching "${this.args}"`;
+    else return 'Enter search term';
   }
 
   get gcse() {
@@ -27,6 +24,6 @@ export default class GoogleSearch extends Component {
     let gcse = this.gcse;
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
-    this.loaded = true
+    this.loaded = true;
   }
 }

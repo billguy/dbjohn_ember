@@ -12,13 +12,15 @@ export default class IndexRoute extends Route {
     };
   }
 
-  @(task(function * () {
-    const pics = yield this.store.query('pic', { per_page: 1 })
-    this.controller.pics = pics
-  }).restartable()) picTask;
+  @(task(function* () {
+    const pics = yield this.store.query('pic', { per_page: 1 });
+    this.controller.pics = pics;
+  }).restartable())
+  picTask;
 
-  @(task(function * () {
+  @(task(function* () {
     const blogs = yield this.store.query('blog-post', { per_page: 2 });
-    this.controller.blogs = blogs
-  }).restartable()) blogsTask;
+    this.controller.blogs = blogs;
+  }).restartable())
+  blogsTask;
 }

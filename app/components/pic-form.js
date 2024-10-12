@@ -5,7 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class PicFormComponent extends Component {
-
   @service activeStorage;
   @service flashMessages;
   @service router;
@@ -40,11 +39,11 @@ export default class PicFormComponent extends Component {
         activeStorage
           .upload(files.item(i), directUploadURL, {
             onProgress: (progress) => {
-              this.uploadProgress = progress
+              this.uploadProgress = progress;
             },
           })
           .then((blob) => {
-            pic.photo = blob.signedId
+            pic.photo = blob.signedId;
           });
       }
     }

@@ -4,7 +4,7 @@ import { resolve } from 'rsvp';
 import { isEmpty } from '@ember/utils';
 
 export default class CurrentUserService extends Service {
-  @inject session
+  @inject session;
   @inject store;
 
   load() {

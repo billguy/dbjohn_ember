@@ -8,8 +8,7 @@ import Model, { attr } from '@ember-data/model';
 // });
 
 export default class ContactModel extends Model {
-
-// export default class ContactModel extends Model.extend(Validations) {
+  // export default class ContactModel extends Model.extend(Validations) {
   @attr('string') name;
   @attr('string') email;
   @attr('string') message;

@@ -5,8 +5,7 @@ import { action } from '@ember/object';
 import Login from '../models/login';
 
 export default class Loginontroller extends Controller {
-
-  @inject session
+  @inject session;
   @inject flashMessages;
   @inject router;
 
@@ -25,7 +24,7 @@ export default class Loginontroller extends Controller {
         this.flashMessages.info('Logged in');
       })
       .catch((reason) => {
-        this.flashMessages.danger(reason.statusText)
+        this.flashMessages.danger(reason.statusText);
       });
   }
 }

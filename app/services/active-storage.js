@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 
 export default class ActiveStorageService extends ActiveStorage {
-  
   @service session;
 
   get headers() {

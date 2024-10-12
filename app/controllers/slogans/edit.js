@@ -3,7 +3,6 @@ import { action } from '@ember/object';
 import { inject } from '@ember/service';
 
 export default class SloganEditController extends Controller {
-
   @inject router;
 
   @action submit(model) {

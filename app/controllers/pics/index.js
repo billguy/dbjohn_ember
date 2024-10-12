@@ -6,10 +6,9 @@ import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency';
 
 export default class PicsIndexController extends Controller {
-
   @service store;
   @service inViewport;
-  @service session
+  @service session;
 
   queryParams = ['tags', 'lat', 'lng'];
 
@@ -35,29 +34,30 @@ export default class PicsIndexController extends Controller {
 
   @(task(function* (params) {
     const records = yield this.store.query('pic', params);
-    this.isLoaded = true
+    this.isLoaded = true;
     this.pics.pushObjects(records.toArray());
-    this.tagList = records.get('meta.tag_list')
+    this.tagList = records.get('meta.tag_list');
     const totalPages = records.get('meta.total_pages');
-    if (this.page == totalPages) this.canLoadMore = false
-  }).restartable()) picsTask;
+    if (this.page == totalPages) this.canLoadMore = false;
+  }).restartable())
+  picsTask;
 
   @action tagSelected(tag) {
-    this.tags = tag.name
+    this.tags = tag.name;
     this.reloadPics();
   }
 
   @action clearTags() {
-    this.tags = null
+    this.tags = null;
     this.reloadPics();
   }
 
   reloadPics() {
-    this.page = 0
-    this.canLoadMore = true
+    this.page = 0;
+    this.canLoadMore = true;
     this.pics.clear();
-    this.isLoaded = false
-    this.currentPic = false
+    this.isLoaded = false;
+    this.currentPic = false;
     this.loadPics();
   }
 
@@ -92,5 +92,4 @@ export default class PicsIndexController extends Controller {
     this.inViewport.stopWatching(loader);
     super.willDestroy(...arguments);
   }
-
 }

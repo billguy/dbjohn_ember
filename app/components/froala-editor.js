@@ -3,7 +3,6 @@ import config from '../config/environment';
 import { inject } from '@ember/service';
 
 export default class FroalaEditor extends FroalaEditorComponent {
-
   @inject session;
   @inject ajax;
   @inject pageFlash;

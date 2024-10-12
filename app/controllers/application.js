@@ -5,7 +5,6 @@ import { later } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
 
 export default class ApplicationController extends Controller {
-
   @inject session;
   @inject currentUser;
   @inject flashMessages;
@@ -14,22 +13,28 @@ export default class ApplicationController extends Controller {
   @tracked q = null;
 
   @tracked isSearching = false;
-  @tracked slogans = []
+  @tracked slogans = [];
 
-  get searchBoxClasses(){
-    return this.isSearching ? "searchBox showSearchBox" : "searchBox hideSearchBox"
+  get searchBoxClasses() {
+    return this.isSearching
+      ? 'searchBox showSearchBox'
+      : 'searchBox hideSearchBox';
   }
 
   @action didInsert() {
-    this.isSearching = this.q != null ? true : false
-    return later(this, function () {
-      this.slogans = this.model
-    }, 5000)
+    this.isSearching = this.q != null ? true : false;
+    return later(
+      this,
+      function () {
+        this.slogans = this.model;
+      },
+      5000,
+    );
   }
 
-  @action doSearch(){
-    if(event.key === 'Enter') {
-      this.q = event.target.value
+  @action doSearch() {
+    if (event.key === 'Enter') {
+      this.q = event.target.value;
       const element = window.google.search.cse.element.getElement('results');
       element.prefillQuery(this.q);
       element.execute(this.q);
@@ -38,11 +43,11 @@ export default class ApplicationController extends Controller {
 
   @action
   searchClicked() {
-    if (this.isSearching){
-      this.isSearching = false
-      this.set('q', null)
+    if (this.isSearching) {
+      this.isSearching = false;
+      this.set('q', null);
     } else {
-      this.isSearching = true
+      this.isSearching = true;
     }
   }
 

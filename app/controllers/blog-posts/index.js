@@ -3,7 +3,6 @@ import { inject } from '@ember/service';
 import Controller from '@ember/controller';
 
 export default class BlogPostIndexController extends Controller {
-
   @inject session;
   @inject currentUser;
 

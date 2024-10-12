@@ -5,9 +5,8 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     'ember-bootstrap': {
-      bootstrapVersion: 4,
-      importBootstrapFont: false,
-      importBootstrapCSS: true,
+      bootstrapVersion: 5,
+      include: ['bs-nav', 'bs-modal', 'bs-modal-simple', 'bs-form'],
       insertEmberWormholeElementToDom: false
     },
     'ember-froala-editor': {
@@ -19,7 +18,7 @@ module.exports = function (defaults) {
     },
     'ember-fetch': {
       preferNative: true,
-    }
+    },
   });
 
   // app.import('node_modules/ember-tag-input/vendor/styles/eti-svg-icons.css');

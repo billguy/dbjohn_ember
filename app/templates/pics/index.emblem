@@ -52,15 +52,14 @@ else
           span
             =tag.taggings_count
 
-  #pics.container
-    .row
-      =each this.pics as |pic|
-        figure
-          img.thumb{{ on "click" (action (mut this.currentPic) pic)}} src=pic.msrc alt=pic.title
-          figcaption
-            =link-to route="pics.show" model=pic
-              =pic.title
-            p #{pic.caption}
+  #pics.d-flex.flex-wrap
+    =each this.pics as |pic|
+      figure
+        img.thumb{{ on "click" (action (mut this.currentPic) pic)}} src=pic.msrc alt=pic.title
+        figcaption
+          =link-to route="pics.show" model=pic
+            =pic.title
+          p #{pic.caption}
 
   div#load-next{did-insert this.setupInViewport}
 

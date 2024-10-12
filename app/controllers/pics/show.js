@@ -4,10 +4,9 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class PicShowController extends Controller {
-
   @inject session;
   @inject router;
-  @inject flashMessages
+  @inject flashMessages;
 
   @tracked shouldDelete = false;
 
@@ -22,15 +21,14 @@ export default class PicShowController extends Controller {
   deletePic(pic) {
     pic.destroyRecord().then(() => {
       this.router.transitionTo('pics.index');
-      this.shouldDelete = false
+      this.shouldDelete = false;
       this.flashMessages.success(`${pic.title} deleted`);
     });
   }
 
   @action
-  didInsert(){
+  didInsert() {
     if (this.model.nextPermalink == null || this.model.prevPermalink == null)
-      this.model.reload()
+      this.model.reload();
   }
-
 }

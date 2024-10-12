@@ -3,7 +3,7 @@ import config from '../config/environment';
 import { inject } from '@ember/service';
 
 export default class Application extends ActiveModelAdapter {
-  @inject session
+  @inject session;
   host = config.host;
 
   get headers() {

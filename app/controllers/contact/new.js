@@ -3,7 +3,6 @@ import { action } from '@ember/object';
 import { inject } from '@ember/service';
 
 export default class ContactNewController extends Controller {
-
   @inject router;
 
   @action submit(contact) {
