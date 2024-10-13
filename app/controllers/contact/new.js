@@ -11,7 +11,7 @@ export default class ContactNewController extends Controller {
     return contact
       .save()
       .then(() => {
-        this.router.ransitionTo('/');
+        this.router.transitionTo('/');
         this.flashMessages.success('Thanks for your message');
       })
       .catch((reason) => {
