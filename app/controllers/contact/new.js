@@ -8,7 +8,7 @@ export default class ContactNewController extends Controller {
   @inject flashMessages;
 
   @action submit(contact) {
-    contact
+    return contact
       .save()
       .then(() => {
         this.router.ransitionTo('/');

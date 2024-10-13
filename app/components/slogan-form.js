@@ -3,6 +3,6 @@ import { action } from '@ember/object';
 
 export default class SloganFormComponent extends Component {
   @action submit(model) {
-    this.args.submitAction(model);
+    return this.args.submitAction(model);
   }
 }

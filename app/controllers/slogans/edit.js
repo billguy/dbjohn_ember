@@ -6,7 +6,7 @@ export default class SloganEditController extends Controller {
   @inject router;
 
   @action submit(model) {
-    model
+    return model
       .save()
       .then(() => {
         this.router.transitionTo('slogans.index');

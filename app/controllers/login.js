@@ -17,7 +17,7 @@ export default class Loginontroller extends Controller {
     const email = this.get('login.email');
     const password = this.get('login.password');
     const authenticator = 'authenticator:jwt';
-    this.session
+    return this.session
       .authenticate(authenticator, { email: email, password: password })
       .then(() => {
         this.router.transitionTo('index');
