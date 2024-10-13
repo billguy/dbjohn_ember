@@ -7,7 +7,7 @@ module.exports = function (defaults) {
     'ember-bootstrap': {
       bootstrapVersion: 5,
       include: ['bs-nav', 'bs-modal', 'bs-modal-simple', 'bs-form'],
-      insertEmberWormholeElementToDom: false
+      insertEmberWormholeElementToDom: false,
     },
     'ember-froala-editor': {
       plugins: [],

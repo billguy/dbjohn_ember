@@ -1,14 +1,14 @@
 # compiled output
 /declarations/
 
-/dist/
+dist/
 
 # dependencies
 /node_modules/
 
 # misc
 /.env*
-/.pnp*
+/.pnp*``
 /.eslintcache
 /coverage/
 /npm-debug.log*
