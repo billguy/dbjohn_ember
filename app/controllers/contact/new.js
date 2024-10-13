@@ -17,7 +17,8 @@ export default class ContactNewController extends Controller {
       .catch((reason) => {
         let error = reason.error
         reason.errors.forEach(e => {
-          error += `<br>${e.detail}`
+          const field = e.source.pointer.substring(e.source.pointer.lastIndexOf('/')+1);
+          error += `<br>${field}: ${e.detail}`
         })
         this.flashMessages.danger(htmlSafe(error));
       });
