@@ -1,5 +1,4 @@
-import Service from '@ember/service';
-import { inject } from '@ember/service';
+import Service, { inject } from '@ember/service';
 import { resolve } from 'rsvp';
 import { isEmpty } from '@ember/utils';
 

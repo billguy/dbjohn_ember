@@ -3,7 +3,7 @@ import JWT from 'ember-simple-auth-token/authenticators/jwt';
 export default JWT.extend({
   refreshAccessToken(token) {
     return new Promise((resolve, reject) => {
-      const headers = merge(this.headers, {
+      const headers = assign(this.headers, {
         Authorization: `Bearer ${token}`,
       });
       this.makeRequest(this.serverTokenRefreshEndpoint, {}, headers)
