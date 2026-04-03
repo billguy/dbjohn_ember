@@ -22,4 +22,8 @@ export default class PostFormComponent extends Component {
   @action removeTagAtIndex(index) {
     return this.args.model.tagList.removeAt(index);
   }
+
+  @action updateContent(content) {
+    this.args.model.content = content;
+  }
 }

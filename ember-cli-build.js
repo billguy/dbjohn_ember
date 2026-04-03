@@ -19,6 +19,24 @@ module.exports = function (defaults) {
     'ember-fetch': {
       preferNative: true,
     },
+    autoImport: {
+      exclude: [
+        '@glimmer/component',
+        '@glimmer/tracking',
+        '@ember/component',
+        '@ember/render-modifiers',
+      ],
+    },
+    emberData: {
+      deprecations: {
+        // New projects can safely leave this deprecation disabled.
+        // If upgrading, to opt-into the deprecated behavior, set this to true and then follow:
+        // https://deprecations.emberjs.com/id/ember-data-deprecate-store-extends-ember-object
+        // before upgrading to Ember Data 6.0
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
+      },
+    },
+    // Add options here
   });
 
   // app.import('node_modules/ember-tag-input/vendor/styles/eti-svg-icons.css');

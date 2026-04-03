@@ -4,13 +4,13 @@
   =form.element label="Title" controlType="text" property="title"
   =form.element label="Permalink" controlType="text" property="permalink"
 
-  =tag-input tags=this.args.model.tagList addTag=(action "addTag") removeTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
+  =tag-input tags=this.args.model.tagList addTag=this.addTag removeTagAtIndex=this.removeTagAtIndex as |tagLabel|
     =tagLabel
   br
   .sr-only
     =form.element label="Content" controlType="textarea" property="content"
 
-  =froala-editor content=(html-safe this.model.content) update=(action (mut this.args.model.content))
+  =froala-editor content=(html-safe this.args.model.content) update=this.updateContent
 
   br
 

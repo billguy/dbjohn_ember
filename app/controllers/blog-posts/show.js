@@ -11,6 +11,11 @@ export default class BlogPostShowController extends Controller {
   @tracked shouldDelete = false;
 
   @action
+  setShouldDelete(value) {
+    this.shouldDelete = value;
+  }
+
+  @action
   deletePost(post) {
     post.destroyRecord().then(() => {
       this.router.transitionTo('blog-posts');

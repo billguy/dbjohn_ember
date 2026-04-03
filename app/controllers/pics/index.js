@@ -35,9 +35,9 @@ export default class PicsIndexController extends Controller {
   @(task(function* (params) {
     const records = yield this.store.query('pic', params);
     this.isLoaded = true;
-    this.pics.pushObjects(records.toArray());
-    this.tagList = records.get('meta.tag_list');
-    const totalPages = records.get('meta.total_pages');
+    this.pics = [...this.pics, ...records];
+    this.tagList = records.meta.tag_list;
+    const totalPages = records.meta.total_pages;
     if (this.page == totalPages) this.canLoadMore = false;
   }).restartable())
   picsTask;
@@ -52,10 +52,14 @@ export default class PicsIndexController extends Controller {
     this.reloadPics();
   }
 
+  @action setCurrentPic(pic) {
+    this.currentPic = pic;
+  }
+
   reloadPics() {
     this.page = 0;
     this.canLoadMore = true;
-    this.pics.clear();
+    this.pics = [];
     this.isLoaded = false;
     this.currentPic = false;
     this.loadPics();

@@ -7,7 +7,7 @@
   .d-none.d-sm-block
     if this.model.hasCoords
       =g-map lat=this.model.lat lng=this.model.lng zoom=10 as |g|
-        =g.marker lat=this.model.lat lng=this.model.lng onClick=(action "markerClicked" this.model)
+        =g.marker lat=this.model.lat lng=this.model.lng onClick=(fn this.markerClicked this.model)
     else
       .h4.hidden-xs.text-muted.text-center.content.map Map Unavailable
 
@@ -32,13 +32,13 @@ figure#subject.cap-bot
 
 .float-right
   if this.session.isAuthenticated
-    =bs-modal-simple title="Please confirm" renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=this.shouldDelete onSubmit=(action "deletePic" this.model) onHide=(action (mut this.shouldDelete) false)
+    =bs-modal-simple title="Please confirm" renderInPlace=true closeTitle="Cancel" submitTitle="Confirm" open=this.shouldDelete onSubmit=(fn this.deletePic this.model) onHide=(fn this.setShouldDelete false)
       p You're about to delete '#{this.model.title}'. Are you sure?
 
     .float-right
       =link-to route="pics.edit" model=this.model | edit
       span &nbsp;|&nbsp;
-      span.text-danger{action (mut this.shouldDelete) true} style="cursor: pointer" delete
+      span.text-danger{on "click" (fn this.setShouldDelete true)} style="cursor: pointer" delete
 
 .clearfix
 

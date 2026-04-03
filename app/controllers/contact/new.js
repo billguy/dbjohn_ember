@@ -7,6 +7,11 @@ export default class ContactNewController extends Controller {
   @inject router;
   @inject flashMessages;
 
+  @action
+  setRecaptchaResponse(response) {
+    this.model.response = response;
+  }
+
   @action submit(contact) {
     return contact
       .save()
@@ -15,11 +20,13 @@ export default class ContactNewController extends Controller {
         this.flashMessages.success('Thanks for your message');
       })
       .catch((reason) => {
-        let error = reason.error
-        reason.errors.forEach(e => {
-          const field = e.source.pointer.substring(e.source.pointer.lastIndexOf('/')+1);
-          error += `<br>${field}: ${e.detail}`
-        })
+        let error = reason.error;
+        reason.errors.forEach((e) => {
+          const field = e.source.pointer.substring(
+            e.source.pointer.lastIndexOf('/') + 1,
+          );
+          error += `<br>${field}: ${e.detail}`;
+        });
         this.flashMessages.danger(htmlSafe(error));
       });
   }

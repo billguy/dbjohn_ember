@@ -6,14 +6,14 @@ if this.session.isAuthenticated
       .btn-primary.btn-sm + New Post
 
 h1.h4
-  a.link{action "clearTags" on="click"}
+  a.link{on "click" this.clearTags}
     span Blog posts
 
 if this.model.meta.tag_list
   ul.list-inline.list-unstyled.tags
     =each this.model.meta.tag_list as |tag|
       li
-        a.link{action "tagSelected" tag on="click"}
+        a.link{on "click" (fn this.tagSelected tag)}
           =tag.name
           span
             =tag.taggings_count

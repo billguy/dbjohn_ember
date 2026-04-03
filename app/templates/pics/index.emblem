@@ -6,7 +6,7 @@ if this.session.isAuthenticated
       .btn-primary.btn-sm + New Pic
 
 h1.h4
-  a.link{action "clearTags" on="click"}
+  a.link{on "click" this.clearTags}
     span Pics
 
 .clearfix
@@ -47,7 +47,7 @@ else
   ul.list-inline.list-unstyled.tags
     =each this.tagList as |tag|
       li
-        a.link{action "tagSelected" tag on="click"}
+        a.link{on "click" (fn this.tagSelected tag)}
           =tag.name
           span
             =tag.taggings_count
@@ -55,7 +55,7 @@ else
   #pics.d-flex.flex-wrap
     =each this.pics as |pic|
       figure
-        img.thumb{{ on "click" (action (mut this.currentPic) pic)}} src=pic.msrc alt=pic.title
+        img.thumb{on "click" (fn this.setCurrentPic pic)} src=pic.msrc alt=pic.title
         figcaption
           =link-to route="pics.show" model=pic
             =pic.title
@@ -63,7 +63,7 @@ else
 
   div#load-next{did-insert this.setupInViewport}
 
-=bs-modal open=this.currentPic size="lg" onHidden=(action (mut this.currentPic) false) as |modal|
+=bs-modal open=this.currentPic size="lg" onHidden=(fn this.setCurrentPic false) as |modal|
   =modal.header
     h4.modal-title
       =link-to route="pics.show" model=this.currentPic

@@ -1,3 +1,3 @@
 h1 New slogan
 
-=slogan-form model=this.model submitAction=(action "submit")
+=slogan-form model=this.model submitAction=this.submit

@@ -17,5 +17,5 @@
         =slogan.title
         =link-to route="slogans.edit" model=slogan
           span edit
-        a.link{action "destroySlogan" slogan}
+        a.link{on "click" (fn this.destroySlogan slogan)}
           span delete

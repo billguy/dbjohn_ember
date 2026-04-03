@@ -8,7 +8,7 @@ h1 Contact
   =form.element label="Your email" controlType="text" property="email"
   =form.element label="Message" controlType="textarea" property="message"
 
-  =g-recaptcha-v2 verified=(action (mut this.model.response))
+  =g-recaptcha-v2 verified=this.setRecaptchaResponse
   br
   =form.submitButton
     if form.isSubmitting

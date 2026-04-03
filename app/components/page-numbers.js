@@ -16,8 +16,15 @@ export default class PageNumbers extends Component {
   }
 
   @action
-  incrementPage(v) {
+  incrementPage(event, v) {
+    event.preventDefault();
     const newVal = v < 0 ? this.page - 1 : this.page + 1;
     this.controller.set('page', newVal);
+  }
+
+  @action
+  pageClicked(event, page) {
+    event.preventDefault();
+    this.controller.set('page', page);
   }
 }

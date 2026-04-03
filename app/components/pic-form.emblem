@@ -1,7 +1,7 @@
 =bs-form model=this.args.model multipart=true onSubmit=this.submit as |form|
   =form.element label="Active" controlType="checkbox" property="published"
   =form.element label="Title" controlType="text" property="title"
-  =tag-input tags=this.args.model.tagList addTag=(action "addTag") removeTagAtIndex=(action "removeTagAtIndex") as |tagLabel|
+  =tag-input tags=this.args.model.tagList addTag=this.addTag removeTagAtIndex=this.removeTagAtIndex as |tagLabel|
     =tagLabel
   br
   =form.element label="Caption" controlType="textarea" property="caption"

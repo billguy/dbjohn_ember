@@ -32,7 +32,7 @@ main.container role="main"
 
           input onkeydown=this.doSearch type="text" class=this.searchBoxClasses placeholder="search" value=this.q
 
-          button.btn.btn-link{action "searchClicked"} type="button"
+          button.btn.btn-link{on "click" this.searchClicked} type="button"
             if this.isSearching
               img src="/assets/images/cancel.png"
             else
@@ -54,7 +54,7 @@ main.container role="main"
           img.inline src="/assets/images/ember.jpg" alt="Ember JS Logo"
     .float-left
       if this.session.isAuthenticated
-        a.link{action 'invalidateSession'}
+        a.link{on "click" this.invalidateSession}
           .text-muted Logout #{this.currentUser.user.name}
       else
         =link-to route="login"

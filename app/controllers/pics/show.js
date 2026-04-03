@@ -27,6 +27,11 @@ export default class PicShowController extends Controller {
   }
 
   @action
+  setShouldDelete(value) {
+    this.shouldDelete = value;
+  }
+
+  @action
   didInsert() {
     if (this.model.nextPermalink == null || this.model.prevPermalink == null)
       this.model.reload();
