@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 import Controller from '@ember/controller';
 
 export default class BlogPostIndexController extends Controller {
-  @inject session;
-  @inject currentUser;
+  @service session;
+  @service currentUser;
 
   queryParams = ['page', 'perPage'];
   page = 1;

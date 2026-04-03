@@ -1,13 +1,13 @@
 import Controller from '@ember/controller';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 import { getOwner } from '@ember/application';
 import { action } from '@ember/object';
 import Login from '../models/login';
 
 export default class Loginontroller extends Controller {
-  @inject session;
-  @inject flashMessages;
-  @inject router;
+  @service session;
+  @service flashMessages;
+  @service router;
 
   login() {
     return Login.create(getOwner(this).ownerInjection());

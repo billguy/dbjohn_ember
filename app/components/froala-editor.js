@@ -1,11 +1,11 @@
 import FroalaEditorComponent from 'ember-froala-editor/components/froala-editor';
 import config from '../config/environment';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class FroalaEditor extends FroalaEditorComponent {
-  @inject session;
-  @inject ajax;
-  @inject pageFlash;
+  @service session;
+  @service ajax;
+  @service pageFlash;
 
   constructor() {
     super(...arguments);

@@ -1,9 +1,9 @@
 import ActiveModelAdapter from 'active-model-adapter';
 import config from '../config/environment';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class Application extends ActiveModelAdapter {
-  @inject session;
+  @service session;
   host = config.host;
 
   get headers() {

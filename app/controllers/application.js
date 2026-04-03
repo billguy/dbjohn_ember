@@ -1,13 +1,13 @@
 import { action } from '@ember/object';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 import Controller from '@ember/controller';
 import { later } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
 
 export default class ApplicationController extends Controller {
-  @inject session;
-  @inject currentUser;
-  @inject flashMessages;
+  @service session;
+  @service currentUser;
+  @service flashMessages;
 
   queryParams = ['q'];
   @tracked q = null;

@@ -1,10 +1,10 @@
-import Service, { inject } from '@ember/service';
+import Service, { service } from '@ember/service';
 import { resolve } from 'rsvp';
 import { isEmpty } from '@ember/utils';
 
 export default class CurrentUserService extends Service {
-  @inject session;
-  @inject store;
+  @service session;
+  @service store;
 
   load() {
     let userId = this.get('session.data.authenticated.user_id');
