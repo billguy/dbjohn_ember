@@ -105,5 +105,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@ember/test-waiters": "^4.1.1"
   }
 }
