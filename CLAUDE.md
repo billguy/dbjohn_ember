@@ -34,7 +34,9 @@ Ember Data with `active-model-adapter` — the API uses Rails-style snake_case s
 
 ### Templates
 
-The codebase uses **both** Emblem (`.emblem` files — an indentation-based Handlebars shorthand) and standard Handlebars (`.hbs`). Emblem is a legacy format; new templates should use `.hbs`. Components use **loose format** (separate `.js` + `.hbs` files) per `.ember-cli` config.
+All templates use standard Handlebars (`.hbs`). Components use **loose format** (separate `.js` + `.hbs` files) per `.ember-cli` config.
+
+**ember-bootstrap contextual components** yield lowercase/camelCase property names — angle bracket invocations must match exactly: `<nav.item>`, `<nav.linkTo>`, `<form.element>`, `<form.submitButton>`, `<modal.header>`, `<modal.body>`. PascalCase variants silently yield `undefined`.
 
 ### Key Add-ons
 

@@ -12,9 +12,6 @@ module.exports = function (environment) {
     disqus: {
       shortname: 'dbjohn',
     },
-    emblemOptions: {
-      blueprints: true,
-    },
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {

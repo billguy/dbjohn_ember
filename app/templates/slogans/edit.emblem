@@ -1,3 +1,0 @@
-h1 Editing '#{this.model.title}'
-
-=slogan-form model=this.model submitAction=this.submit

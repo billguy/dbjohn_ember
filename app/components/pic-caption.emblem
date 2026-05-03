@@ -1,9 +1,0 @@
-ul.list-unstyled
-  li
-    =format-date this.args.pic.picDate
-  if this.args.pic.camera
-    li #{this.args.pic.camera}
-  if this.args.pic.fInfo
-    li #{this.args.pic.fInfo}
-  if this.args.pic.location
-    li #{this.args.pic.location}

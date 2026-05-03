@@ -1,4 +1,0 @@
-=bs-form model=this.login onSubmit=this.authenticate as |form|
-  =form.element label="User" controlType="email" property="email"
-  =form.element label="Password" controlType="password" property="password"
-  =form.submitButton | Submit
