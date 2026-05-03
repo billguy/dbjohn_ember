@@ -1,0 +1,30 @@
+<BsForm @model={{this.args.model}} @onSubmit={{this.submit}} as |form|>
+  <form.element @label="Published" @controlType="checkbox" @property="published" />
+  <form.element @label="Title" @controlType="text" @property="title" />
+  <form.element @label="Permalink" @controlType="text" @property="permalink" />
+
+  <TagInput
+    @tags={{this.args.model.tagList}}
+    @addTag={{this.addTag}}
+    @removeTagAtIndex={{this.removeTagAtIndex}}
+    as |tagLabel|
+  >
+    {{tagLabel}}
+  </TagInput>
+  <br />
+  <div class="sr-only">
+    <form.element @label="Content" @controlType="textarea" @property="content" />
+  </div>
+
+  <QuillEditor @content={{html-safe this.args.model.content}} @update={{this.updateContent}} />
+
+  <br />
+
+  <form.submitButton>
+    {{#if form.isSubmitting}}
+      <span>Please wait...</span>
+    {{else}}
+      <span>Submit</span>
+    {{/if}}
+  </form.submitButton>
+</BsForm>

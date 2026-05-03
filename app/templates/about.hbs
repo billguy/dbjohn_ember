@@ -1,0 +1,21 @@
+{{page-title "About"}}
+
+<div class="float-left">
+  <h1>{{this.model.title}}</h1>
+  <small class="text-muted">
+    <span>Last updated:&nbsp;</span>
+    {{format-date this.model.updatedAt}}
+  </small>
+</div>
+
+{{#if this.session.isAuthenticated}}
+  <div class="float-right">
+    <LinkTo @route="blog-posts.edit" @model={{this.model}}>edit</LinkTo>
+  </div>
+{{/if}}
+
+<div class="clearfix"></div>
+
+<div class="blog-post">
+  {{html-content this.model.content}}
+</div>

@@ -1,0 +1,18 @@
+{{page-title "Contact me"}}
+
+<h1>Contact</h1>
+
+<BsForm @model={{this.model}} @onSubmit={{this.submit}} as |form|>
+  <form.element @label="Your name" @controlType="text" @property="name" />
+  <form.element @label="Your email" @controlType="text" @property="email" />
+  <form.element @label="Message" @controlType="textarea" @property="message" />
+  <GRecaptchaV2 @verified={{this.setRecaptchaResponse}} />
+  <br />
+  <form.submitButton>
+    {{#if form.isSubmitting}}
+      <span>Please wait...</span>
+    {{else}}
+      <span>Submit</span>
+    {{/if}}
+  </form.submitButton>
+</BsForm>

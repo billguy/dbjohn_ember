@@ -1,0 +1,83 @@
+{{page-title "Pics"}}
+
+{{#if this.session.isAuthenticated}}
+  <div class="float-right h1">
+    <LinkTo @route="pics.new">
+      <div class="btn-primary btn-sm">+ New Pic</div>
+    </LinkTo>
+  </div>
+{{/if}}
+
+<h1 class="h4">
+  <a class="link" {{on "click" this.clearTags}}>
+    <span>Pics</span>
+  </a>
+</h1>
+
+<div class="clearfix"></div>
+
+{{#unless this.isLoaded}}
+  <div class="ph-item">
+    <div class="ph-picture"></div>
+  </div>
+
+  <div class="ph-item">
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+  </div>
+
+  <div class="ph-item">
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+  </div>
+
+  <div class="ph-item">
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+    <div class="ph-col-4"><div class="ph-picture"></div></div>
+  </div>
+{{else}}
+  <ul class="list-inline list-unstyled tags">
+    {{#each this.tagList as |tag|}}
+      <li>
+        <a class="link" {{on "click" (fn this.tagSelected tag)}}>
+          {{tag.name}}
+          <span>{{tag.taggings_count}}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+
+  <div id="pics" class="d-flex flex-wrap">
+    {{#each this.pics as |pic|}}
+      <figure>
+        <img class="thumb" src={{pic.msrc}} alt={{pic.title}} {{on "click" (fn this.setCurrentPic pic)}} />
+        <figcaption>
+          <LinkTo @route="pics.show" @model={{pic}}>{{pic.title}}</LinkTo>
+          <p>{{pic.caption}}</p>
+        </figcaption>
+      </figure>
+    {{/each}}
+  </div>
+
+  <div id="load-next" {{did-insert this.setupInViewport}}></div>
+{{/unless}}
+
+<BsModal @open={{this.currentPic}} @size="lg" @onHidden={{fn this.setCurrentPic false}} as |modal|>
+  <modal.header>
+    <h4 class="modal-title">
+      <LinkTo @route="pics.show" @model={{this.currentPic}}>
+        {{this.currentPic.title}}
+      </LinkTo>
+    </h4>
+  </modal.header>
+  <modal.body>
+    <div class="d-flex justify-content-center">
+      <LinkTo @route="pics.show" @model={{this.currentPic}}>
+        <img src={{this.currentPic.src}} alt={{this.currentPic.title}} />
+      </LinkTo>
+    </div>
+  </modal.body>
+</BsModal>
