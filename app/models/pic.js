@@ -1,24 +1,14 @@
 import Model, { attr } from '@ember-data/model';
-// import { validator, buildValidations } from 'ember-cp-validations';
+import { validator, buildValidations } from 'ember-cp-validations';
 import config from '../config/environment';
 
-// const Validations = buildValidations({
-//   title: [
-//     validator('presence', true),
-//     validator('ds-error')
-//   ],
-//   caption: [
-//     validator('presence', true),
-//     validator('ds-error')
-//   ],
-//   photo: [
-//     validator('presence', true),
-//     validator('ds-error')
-//   ]
-// });
-// export default class PicModel extends Model.extend(Validations) {
-
-export default class PicModel extends Model {
+const Validations = buildValidations({
+  title: [validator('presence', true), validator('ds-error')],
+  caption: [validator('presence', true), validator('ds-error')],
+  photo: [validator('presence', true), validator('ds-error')],
+});
+export default class PicModel extends Model.extend(Validations) {
+  // export default class PicModel extends Model {
   @attr('boolean', { defaultValue: false }) published;
   @attr('string') title;
   @attr('string') permalink;

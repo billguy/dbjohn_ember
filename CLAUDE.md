@@ -30,23 +30,38 @@ JWT-based auth via `ember-simple-auth` + `ember-simple-auth-token`. The `app/aut
 
 ### Data Layer
 
-Ember Data with `active-model-adapter` — the API uses Rails-style snake_case serialization. Custom serializers in `app/serializers/` handle any field mapping. The `app/routes/application.js` loads the current user and slogans on startup.
+WarpDrive (`@warp-drive/legacy` + `@warp-drive/json-api`) with `active-model-adapter` — the API uses Rails-style snake_case serialization. The store is configured in `app/services/store.js` via `useLegacyStore({ cache: JSONAPICache, legacyRequests: true })`. Custom serializers in `app/serializers/` handle any field mapping. The `app/routes/application.js` loads the current user and slogans on startup. Transform files live in `app/transforms/` and re-export from `@ember-data/serializer/transform`.
 
 ### Templates
 
-All templates use standard Handlebars (`.hbs`). Components use **loose format** (separate `.js` + `.hbs` files) per `.ember-cli` config.
+All components and route templates use **GJS strict mode** (`.gjs` files with `<template>` tag). Every value referenced in the template — components, helpers, modifiers — must be explicitly imported at the top of the file. Class-based components embed `<template>` inside the class body; template-only files (e.g. `pic-caption.gjs`) have only a top-level `<template>`. Route templates live in `app/templates/` as template-only `.gjs` files.
+
+**Route template context**: Ember passes the controller as `@controller` and the route model as `@model` to route templates. Use `@controller.someProperty` / `@controller.someAction` for controller access, and `@model` / `@model.someProperty` for the route model. Do NOT use `this.xxx` in argument positions (modifier args, helper args, component args) — `this` in the scope closure is `undefined` at module evaluation time and only works for simple content expressions via the VM's self-reference mechanism.
+
+Key import paths for GJS:
+- `import { on } from '@ember/modifier'`
+- `import { fn, hash } from '@ember/helper'`
+- `import { LinkTo } from '@ember/routing'`
+- `import { didInsert } from '@ember/render-modifiers'`
+- `import pageTitle from 'ember-page-title/helpers/page-title'`
+- `import BsForm from 'ember-bootstrap/components/bs-form'` (likewise `bs-nav`, `bs-modal`, `bs-modal-simple`)
+- `import FlashMessage from 'ember-cli-flash/components/flash-message'`
+- `import TagInput from 'ember-tag-input/components/tag-input'`
+- Local helpers: `import formatDate from 'dbjohn-ember/helpers/format-date'` etc.
+- Local components: `import PicCaption from 'dbjohn-ember/components/pic-caption'` etc.
+- `{{outlet}}` is a built-in keyword — no import needed.
 
 **ember-bootstrap contextual components** yield lowercase/camelCase property names — angle bracket invocations must match exactly: `<nav.item>`, `<nav.linkTo>`, `<form.element>`, `<form.submitButton>`, `<modal.header>`, `<modal.body>`. PascalCase variants silently yield `undefined`.
 
 ### Key Add-ons
 
 - **ember-bootstrap** — Bootstrap 5 components (bs-nav, bs-modal, bs-form only; configured in `ember-cli-build.js`)
-- **quill** — Rich text editor (snow theme); `app/components/quill-editor.js` wraps it. CSS imported via `app.import` in `ember-cli-build.js`.
-- **@googlemaps/js-api-loader** — Loads the Google Maps JS API; `app/services/google-maps.js` exposes a `load()` method that calls `setOptions({ key: ... })` then preloads the `maps` and `marker` libraries; `app/components/google-map.js` calls `load()` then instantiates `google.maps.Map` and `google.maps.marker.AdvancedMarkerElement`
-- **@algonauti/ember-active-storage** — File uploads to ActiveStorage
-- **ember-cp-validations** — Model validations (currently disabled due to incompatibility with ember-data ~5.3.3)
+- **quill** — Rich text editor (snow theme); `app/components/quill-editor.gjs` wraps it. CSS imported via `app.import` in `ember-cli-build.js`.
+- **@googlemaps/js-api-loader** — Loads the Google Maps JS API; `app/services/google-maps.js` exposes a `load()` method that calls `setOptions({ key: ... })` then preloads the `maps` and `marker` libraries; `app/components/google-map.gjs` calls `load()` then instantiates `google.maps.Map` and `google.maps.marker.AdvancedMarkerElement`
+- **active-storage (custom)** — File uploads to ActiveStorage; implemented in `app/services/active-storage.js` using `spark-md5` for checksums. Replaces `@algonauti/ember-active-storage`.
+- **ember-cp-validations** — Model validations (currently disabled due to incompatibility with WarpDrive/ember-data ~5.x)
 - **dayjs** — Date formatting via `app/helpers/format-date.js` (default format `'LLLL'`, uses `localizedFormat` plugin) and `app/helpers/from-now.js` (uses `relativeTime` plugin)
-- **reCAPTCHA v2** — Loaded via script tag in `index.html`; `app/components/g-recaptcha-v2.js` wraps the native `grecaptcha.render()` API with a `@verified` callback arg
+- **reCAPTCHA v2** — Loaded via script tag in `index.html`; `app/components/g-recaptcha-v2.gjs` wraps the native `grecaptcha.render()` API with a `@verified` callback arg
 
 ### Environment & Config
 

@@ -1,35 +1,34 @@
-'use strict';
-
+'use strict';;
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
+const {
+  compatBuild
+} = require("@embroider/compat");
+
+module.exports = async function(defaults) {
+  const { setConfig } = await import('@warp-drive/build-config');
+  const {
+    buildOnce
+  } = await import("@embroider/vite");
+
   const app = new EmberApp(defaults, {
     babel: {
       plugins: [require.resolve('ember-concurrency/async-arrow-task-transform')],
     },
     'ember-bootstrap': {
       bootstrapVersion: 5,
+      importBootstrapCSS: false,
       include: ['bs-nav', 'bs-modal', 'bs-modal-simple', 'bs-form'],
       insertEmberWormholeElementToDom: false,
     },
-    autoImport: {
-      exclude: [
-        '@glimmer/component',
-        '@glimmer/tracking',
-        '@ember/component',
-        '@ember/render-modifiers',
-      ],
-    },
-    emberData: {
-      deprecations: {
-        // New projects can safely leave this deprecation disabled.
-        // If upgrading, to opt-into the deprecated behavior, set this to true and then follow:
-        // https://deprecations.emberjs.com/id/ember-data-deprecate-store-extends-ember-object
-        // before upgrading to Ember Data 6.0
-        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
-      },
-    },
     // Add options here
+  });
+
+  setConfig(app, __dirname, {
+    deprecations: {
+      DEPRECATE_TRACKING_PACKAGE: false,
+      DEPRECATE_LEGACY_IMPORTS: false,
+    },
   });
 
   app.import('node_modules/quill/dist/quill.snow.css');
@@ -49,5 +48,5 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  return compatBuild(app, buildOnce);
 };

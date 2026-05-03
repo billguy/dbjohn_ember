@@ -27,9 +27,8 @@ const esmParserOptions = {
   ecmaVersion: 'latest',
   requireConfigFile: false,
   babelOptions: {
-    plugins: [
-      ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
-    ],
+    configFile: false,
+    plugins: [['module:decorator-transforms', {}]],
   },
 };
 
