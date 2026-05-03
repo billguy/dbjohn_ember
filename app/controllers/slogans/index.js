@@ -1,9 +1,9 @@
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class SloganIndexController extends Controller {
-  @inject router;
+  @service router;
 
   @action
   destroySlogan(slogan) {

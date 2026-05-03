@@ -6,8 +6,7 @@
 
   .d-none.d-sm-block
     if this.model.hasCoords
-      =g-map lat=this.model.lat lng=this.model.lng zoom=10 as |g|
-        =g.marker lat=this.model.lat lng=this.model.lng onClick=(fn this.markerClicked this.model)
+      =google-map lat=this.model.lat lng=this.model.lng zoom=10 onMarkerClick=(fn this.markerClicked this.model)
     else
       .h4.hidden-xs.text-muted.text-center.content.map Map Unavailable
 

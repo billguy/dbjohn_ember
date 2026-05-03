@@ -22,7 +22,7 @@ if this.isLoaded
           =link-to route="blog-posts.show" model=blog
             =blog.title
         .text-muted.small
-          =moment-from-now blog.createdAt
+          =from-now blog.createdAt
 
         =html-content blog.content
 

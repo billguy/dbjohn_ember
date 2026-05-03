@@ -10,7 +10,7 @@
   .sr-only
     =form.element label="Content" controlType="textarea" property="content"
 
-  =froala-editor content=(html-safe this.args.model.content) update=this.updateContent
+  =quill-editor content=(html-safe this.args.model.content) update=this.updateContent
 
   br
 

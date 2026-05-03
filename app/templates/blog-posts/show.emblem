@@ -4,7 +4,7 @@
   h1
     =this.model.title
   small.text-muted
-    =moment-format this.model.createdAt
+    =format-date this.model.createdAt
 
 if this.session.isAuthenticated
 

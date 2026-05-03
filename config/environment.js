@@ -9,34 +9,6 @@ module.exports = function (environment) {
     host: 'http://localhost:3000',
     locationType: 'history',
     google_search_key: process.env.SEARCH_KEY,
-    'ember-cli-google': {
-      recaptcha: {
-        siteKey: process.env.CAPTCHA_KEY,
-      },
-    },
-    'ember-froala-editor': {
-      key: process.env.FROALA_KEY,
-      linkConvertEmailAddress: false,
-    },
-    analytics: {
-      integrations: [
-        {
-          name: 'GoogleAnalytics',
-          config: {
-            id: process.env.ANALYTICS_KEY,
-            remarketing: true,
-            ecommerce: true,
-            enhancedEcommerce: false,
-            set: {
-              anonymizeIp: true,
-            },
-          },
-        },
-      ],
-    },
-    moment: {
-      outputFormat: 'LLLL',
-    },
     disqus: {
       shortname: 'dbjohn',
     },
@@ -61,13 +33,9 @@ module.exports = function (environment) {
     },
   };
 
-  ENV['ember-google-maps'] = {
-    key: process.env.GOOGLE_MAPS_API_KEY, // Using .env files in this example
-    language: 'en',
-    region: 'US',
-    protocol: 'https',
-    libraries: [],
-  };
+  ENV.GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+  ENV.GOOGLE_MAP_ID = process.env.GOOGLE_MAP_ID;
+  ENV.CAPTCHA_KEY = process.env.CAPTCHA_KEY;
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

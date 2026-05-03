@@ -1,11 +1,11 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 
 export default class ContactNewController extends Controller {
-  @inject router;
-  @inject flashMessages;
+  @service router;
+  @service flashMessages;
 
   @action
   setRecaptchaResponse(response) {

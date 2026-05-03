@@ -4,20 +4,13 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
+    babel: {
+      plugins: [require.resolve('ember-concurrency/async-arrow-task-transform')],
+    },
     'ember-bootstrap': {
       bootstrapVersion: 5,
       include: ['bs-nav', 'bs-modal', 'bs-modal-simple', 'bs-form'],
       insertEmberWormholeElementToDom: false,
-    },
-    'ember-froala-editor': {
-      plugins: [],
-      themes: ['royal'],
-    },
-    'ember-google-maps': {
-      only: ['marker', 'info-window'],
-    },
-    'ember-fetch': {
-      preferNative: true,
     },
     autoImport: {
       exclude: [
@@ -39,6 +32,7 @@ module.exports = function (defaults) {
     // Add options here
   });
 
+  app.import('node_modules/quill/dist/quill.snow.css');
   // app.import('node_modules/ember-tag-input/vendor/styles/eti-svg-icons.css');
   // app.import('node_modules/ember-tag-input/vendor/styles/ember-tag-input.css');
 

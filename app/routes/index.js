@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
 import { task } from 'ember-concurrency';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class IndexRoute extends Route {
-  @inject store;
+  @service store;
 
   model() {
     return {
@@ -12,15 +12,13 @@ export default class IndexRoute extends Route {
     };
   }
 
-  @(task(function* () {
-    const pics = yield this.store.query('pic', { per_page: 1 });
+  picTask = task({ restartable: true }, async () => {
+    const pics = await this.store.query('pic', { per_page: 1 });
     this.controller.pics = pics;
-  }).restartable())
-  picTask;
+  });
 
-  @(task(function* () {
-    const blogs = yield this.store.query('blog-post', { per_page: 2 });
+  blogsTask = task({ restartable: true }, async () => {
+    const blogs = await this.store.query('blog-post', { per_page: 2 });
     this.controller.blogs = blogs;
-  }).restartable())
-  blogsTask;
+  });
 }

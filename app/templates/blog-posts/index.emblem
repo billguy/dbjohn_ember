@@ -27,7 +27,7 @@ if this.model.meta.tag_list
         =link-to route="blog-posts.show" model=post
           =post.title
       .text-muted.small
-        =moment-format post.createdAt
+        =format-date post.createdAt
         span &nbsp;•&nbsp;
         /=disqus-comment-count identifier=post.discusIdentifier
       p

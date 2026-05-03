@@ -1,10 +1,10 @@
 import Component from '@glimmer/component';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class PostFormComponent extends Component {
-  @inject flashMessages;
-  @inject router;
+  @service flashMessages;
+  @service router;
 
   @action submit(model) {
     return model

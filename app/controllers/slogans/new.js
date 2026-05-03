@@ -1,9 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class SloganNewController extends Controller {
-  @inject router;
+  @service router;
 
   @action submit(model) {
     return model

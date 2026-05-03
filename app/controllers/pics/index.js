@@ -7,8 +7,9 @@ import { task } from 'ember-concurrency';
 
 export default class PicsIndexController extends Controller {
   @service store;
-  @service inViewport;
   @service session;
+
+  _observer = null;
 
   queryParams = ['tags', 'lat', 'lng'];
 
@@ -32,15 +33,14 @@ export default class PicsIndexController extends Controller {
     };
   }
 
-  @(task(function* (params) {
-    const records = yield this.store.query('pic', params);
+  picsTask = task({ restartable: true }, async (params) => {
+    const records = await this.store.query('pic', params);
     this.isLoaded = true;
     this.pics = [...this.pics, ...records];
     this.tagList = records.meta.tag_list;
     const totalPages = records.meta.total_pages;
     if (this.page == totalPages) this.canLoadMore = false;
-  }).restartable())
-  picsTask;
+  });
 
   @action tagSelected(tag) {
     this.tags = tag.name;
@@ -72,28 +72,20 @@ export default class PicsIndexController extends Controller {
     task.perform(params);
   }
 
-  didInsertElement() {
-    set(this, 'viewportSpy', true);
-  }
-
-  @action setupInViewport() {
-    const loader = document.getElementById('load-next');
-    const viewportTolerance = { bottom: 200 };
-    const { onEnter } = this.inViewport.watchElement(loader, {
-      viewportTolerance,
-    });
-    onEnter(this.didEnterViewport.bind(this));
-  }
-
-  didEnterViewport() {
-    if (this.canLoadMore) {
-      this.loadPics();
-    }
+  @action setupInViewport(element) {
+    this._observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && this.canLoadMore) {
+          this.loadPics();
+        }
+      },
+      { rootMargin: '0px 0px 200px 0px' },
+    );
+    this._observer.observe(element);
   }
 
   willDestroy() {
-    const loader = this.elementId;
-    this.inViewport.stopWatching(loader);
+    this._observer?.disconnect();
     super.willDestroy(...arguments);
   }
 }

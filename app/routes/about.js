@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
-import { inject } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class AboutRoute extends Route {
-  @inject store;
+  @service store;
 
   model() {
     return this.store.findRecord('post', 'about');
